@@ -1,0 +1,41 @@
+<template name="trusteeSidebarWidget">
+    {{#with getUser user}}
+    <div class="row trustee-sidebar-widget">
+        <div class="col-md-12">
+            <h2 class="title">Trustee</h2>
+        </div>
+        <div class="col-xs-4">
+            {{#if profile.profileImage}}
+            <img style="max-width: 80px;" src="{{fileLinkURL profile.profileImage}}" />
+            {{else}}
+            <img style="max-width: 80px;" src="/images/user-icon.png" />
+            {{/if}}
+        </div>
+        <div class="col-xs-8">
+            <p>{{profile.name}}</p>
+            <div class="div_rating">
+                <!-- <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span> -->
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <a class="btn btn-primary btn-block transparent" href="#">TRUSTEE PROFILE</a>
+        </div>
+    </div>
+    {{/with}}
+</template>

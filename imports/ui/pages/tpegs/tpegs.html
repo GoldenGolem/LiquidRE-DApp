@@ -1,0 +1,62 @@
+<template name="tpegs">
+    <div class="ui_r_sidebar">
+        <ul class="list-group">
+            <li class="list-group-item">TPEG supply: {{getSupply}}</li>
+            <li class="list-group-item">My TPEGs: {{getBalance}}</li>
+            <li class="list-group-item input_custom">
+                Balance: {{getBalanceOf}}
+                <br>
+                <form id="get-balance-of" onsubmit="return false">
+                    <input name="of_address" value="{{getCoinbase}}">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Get balance</button>
+                </form>
+            </li>
+            <li class="list-group-item input_custom">
+                Allowance: {{getAllowance}}
+                <br>
+                <form id="check-allowance" onsubmit="return false">
+                    <input name="allowance_from_address" value="{{getCoinbase}}">
+                    <br>
+                    <input placeholder="To Address" name="allowance_to_address">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Check allowance</button>
+                </form>
+            </li>
+            <li class="list-group-item input_custom">
+                <form id="update-allowance" onsubmit="return false">
+                    <input placeholder="To Address" name="update_allowance_to_address">
+                    <br>
+                    <input placeholder="Amount" name="update_allowance_amount">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Change my allowance</button>
+                    <br>
+                    NOTE: if allowance is nonzero, you can only approve an allowance of 0
+                </form>
+            </li>
+            <li class="list-group-item input_custom">
+                Send TPEGs
+                <br>
+                <form id="send-tpegs" onsubmit="return false">
+                    <input placeholder="Address" name="send_address">
+                    <br>
+                    <input placeholder="Amount" name="send_amount">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Send</button>
+                </form>
+            </li>
+            <li class="list-group-item input_custom">
+                Issue TPEGs
+                <br>
+                <form id="issue-tpegs" onsubmit="return false">
+                    <input placeholder="Address" name="issue_address">
+                    <br>
+                    <input placeholder="Amount" name="issue_amount">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Issue</button>
+                </form>
+            </li>
+        </ul>
+        <br>
+    </div>
+</template>

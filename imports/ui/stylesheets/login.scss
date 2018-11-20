@@ -1,0 +1,54 @@
+.web3_login {
+    background: #FFFFFF;
+    border-radius: 4px;
+    .web3_wrapper {
+        padding: 50px 0px;
+        text-align: center;
+        img {
+            width: 73px;
+            height: 56px;
+        }
+        h2 {
+            font-family: Roboto;
+            font-weight: 700;
+            font-size: 24px;
+            color: #000000;
+            text-align: center;
+            line-height: 34px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        p {
+            font-family: Roboto;
+            font-size: 18px;
+            color: #000000;
+            text-align: center;
+            line-height: 34px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        .btn_metamask {
+            margin-bottom: 75px;
+        }
+
+        .btn-primary{
+            color: #ffffff;
+            background: #1875F0;
+            width: 173px;
+            height: 38px;
+            border: 2px solid rgba(24,117,240,0.25);
+            border-radius: 4px;
+            font-family: Roboto;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-align: center;
+            padding-top:9px;
+        }
+
+        .video_mask {
+            border-top: 1px solid #ccc;
+            padding-top: 50px;
+        }
+    }
+}

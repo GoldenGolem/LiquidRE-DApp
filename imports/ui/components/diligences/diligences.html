@@ -1,0 +1,203 @@
+<template name="diligences">
+    {{#with IREOInfo}}
+    <div class="diligences">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="title">DUE DILIGENCE</h2>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="spacer"></div>
+
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="alert-message">
+                    <i class="fa fa-exclamation-triangle"></i> SELLER HAS POSTED NO DILIGENCE
+                </div>
+            </div>
+        </div> -->
+
+        <div class="diligence row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h2 class="title pull-left">Physical Inspections:</h2>
+                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                <button data-toggle="modal" data-target="#upload-form" class="btn btn-sm btn-primary pull-right btn-modal" data-loc="physical">Upload</button>
+                {{/if}}
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-xs-12 col-md-10">
+                <button disabled="disabled" class="text-left btn btn-primary btn-block btn-lg transparent">
+                    {{#if countFiles 'physical' 'documents'}}
+                    <img src="/images/icons/doc-pdf.svg" alt=""> {{/if}} {{#if countFiles 'physical' 'videos'}}
+                    <img src="/images/icons/doc-video.svg" alt=""> {{/if}} {{#if countFiles 'physical' 'pictures'}}
+                    <img src="/images/icons/doc-pictures.svg" alt=""> {{/if}}
+                    <span class="text-details">
+                        {{getFilesCaption 'physical'}} Uploaded
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <a href="/ireos/{{address}}/diligence/physical" class="btn btn-primary btn-lg transparent">VIEW</a>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+
+        <div class="diligence row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h2 class="title pull-left">Financials:</h2>
+                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                <button data-toggle="modal" data-target="#upload-form" class="btn btn-sm btn-primary pull-right btn-modal" data-loc="financial">Upload</button>
+                {{/if}}
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-xs-12 col-md-10">
+                <button disabled="disabled" class="text-left btn btn-primary btn-block btn-lg transparent">
+                    {{#if countFiles 'financial' 'documents'}}
+                    <img src="/images/icons/doc-pdf.svg" alt=""> {{/if}} {{#if countFiles 'financial' 'videos'}}
+                    <img src="/images/icons/doc-video.svg" alt=""> {{/if}} {{#if countFiles 'financial' 'pictures'}}
+                    <img src="/images/icons/doc-pictures.svg" alt=""> {{/if}}
+                    <span class="text-details">
+                        {{getFilesCaption 'financial'}} Uploaded
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <a href="/ireos/{{address}}/diligence/financial" class="btn btn-primary btn-lg transparent">VIEW</a>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+
+        <div class="diligence row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h2 class="title pull-left">Legal:</h2>
+                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                <button data-toggle="modal" data-target="#upload-form" class="btn btn-sm btn-primary pull-right btn-modal" data-loc="legal">Upload</button>
+                {{/if}}
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-xs-12 col-md-10">
+                <button disabled="disabled" class="text-left btn btn-primary btn-block btn-lg transparent">
+                    {{#if countFiles 'legal' 'documents'}}
+                    <img src="/images/icons/doc-pdf.svg" alt=""> {{/if}} {{#if countFiles 'legal' 'videos'}}
+                    <img src="/images/icons/doc-video.svg" alt=""> {{/if}} {{#if countFiles 'legal' 'pictures'}}
+                    <img src="/images/icons/doc-pictures.svg" alt=""> {{/if}}
+                    <span class="text-details">
+                        {{getFilesCaption 'legal'}} Uploaded
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <a href="/ireos/{{address}}/diligence/legal" class="btn btn-primary btn-lg transparent">VIEW</a>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+
+        <!-- <div class="row">
+            <div class="col-xs-12 col-md-3"></div>
+            <div class="col-xs-12 col-md-6">
+                <button class="btn btn-block btn-primary transparent center">REQUEST DOCUMENTATION</button>
+            </div>
+            <div class="col-xs-12 col-md-3"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="spacer"></div> -->
+    </div>
+
+    <div class="modal fade" id="upload-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <input class="hidden" type="file" id="upload-file">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">DILIGENCE FILES</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Videos
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Title</label>
+                                                    <input id="file-youtube-title" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea id="file-youtube-description" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Youtube URL</label>
+                                                    <input id="file-youtube-url" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <button id="add-file-video" style="margin-top: 40px;" class="btn btn-primary btn-sm">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Pictures
+                                    </div>
+                                    <div class="panel-body">
+                                        {{#if isUploadingPicture}}
+                                            <button class="btn btn-block btn-primary" disabled="disabled">Uploading, please wait...</button>
+                                        {{else}}
+                                            <button class="btn btn-block btn-primary btn-upload-file" data-type="pictures">Upload</button>
+                                        {{/if}}
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Documents
+                                    </div>
+                                    <div class="panel-body">
+                                        {{#if isUploadingDocument}}
+                                            <button class="btn btn-block btn-primary" disabled="disabled">Uploading, please wait...</button>
+                                        {{else}}
+                                            <button class="btn btn-block btn-primary btn-upload-file" data-type="documents">Upload</button>
+                                        {{/if}}                                   
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{/with}}
+</template>

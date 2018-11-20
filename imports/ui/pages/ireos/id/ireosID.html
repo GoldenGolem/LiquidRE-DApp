@@ -1,0 +1,489 @@
+<template name="ireosID">
+
+    {{#with getIREOInfo}}
+    <div class="row property-id">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">{{name}}</h2>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-7">
+                            <div class="balance pull-right">
+                                {{fromWei myBalance}} SHARES
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-sm-6 col-md-5">
+                            <div class="labels pull-right">
+                                <span class="label label-success">{{formatCurrency(fromWei myBalance)}}</span>
+                                <br /><br /><span class="label label-primary">{{formatNumber (percent myBalance minFundingGoal)}}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 details">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+
+                    <div class="block left">
+                        <div class="content">
+                            {{#if showApproveBtn }}
+                            <li class="list-group-item">
+                                <div class="alert alert-info">You're the Trustee of this IREO.</div>
+                                <form id="new-ireo-approve" onsubmit="return false">
+                                    <div class="form-group">
+                                        <label>
+                                            FUNDING GOAL (USD):
+                                        </label>
+                                        <input type="number" name="goal" class="form-control" value="{{divide minFundingGoal 1e18}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            START & END TIMES:
+                                        </label>
+                                        <input type="text" value="" name="daterange" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm">Approve</button>
+                                    <div class="hidden">
+                                        <label>
+                                            Start time:
+                                            <input type="text" name="start_time" id="start_time">
+                                        </label>
+                                        <label>
+                                            End time:
+                                            <input type="text" name="end_time" id="end_time">
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            {{attachDatetimepicker startTime endTime}}
+                            {{/if}} {{#if showWithdrawBtn }}
+                            <li class="list-group-item">
+                                <div class="alert alert-info">You're the Trustee of this IREO and it has funded and it is past end date or the goal was
+                                    reached.
+                                </div>
+                                <button id="withdraw-funds" class="btn btn-primary btn-sm">Withdraw funds</button>
+                            </li>
+                            {{/if}}
+                            <!-- <li> -->
+                            <!-- {{#if isTrading lret.status}}
+                                <span class="text-success">Trading Enabled</span>
+                                {{else}}
+                                <span class="text-success">Trading Disabled</span>
+                                {{/if}} {{#if isTrusteeOwner lret}} {{#if isTrading lret.status}}
+                                <button data-address="{{lret.address}}" class="btn btn-primary btn-sm btn-disable-conversion" type="button">Disable</button>
+                                {{else}}
+                                <button data-address="{{lret.address}}" class="btn btn-primary btn-sm btn-enable-conversion" type="button">Enable</button>
+                                {{/if}} {{/if}} -->
+                            <!-- </li> -->
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="block left">
+                        <div class="content">
+
+                            <div class="spacer"></div>
+                            <div style="position: relative;">
+                                {{#with IREOFiles address}} 
+                                    {{#if image}}
+                                        <img style="width: 100%;" src="{{fileLinkURL image}}">
+                                    {{else}}
+                                        <img style="width: 100%;" src="/images/no_image_available.jpeg">
+                                    {{/if}}
+                                {{/with}}
+                                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                                    {{#with IREOFiles address}}
+                                        {{#if isUploadingProfileImage}}
+                                            <button disabled="disabled" style="position: absolute; top: 50%; left: 40%;" class="btn btn-lg btn-primary">
+                                                Uploading...
+                                            </button>
+                                        {{else}}
+                                            <button id="add-image" style="position: absolute; bottom: 0%; right: 0%;" class="btn btn-lg btn-primary">
+                                            {{#if image}} Edit Image {{else}} Add Image {{/if}}
+                                            </button>
+                                        {{/if}}
+                                    {{/with}}
+                                {{/if}}
+                            </div>
+                            <div class="spacer clearfix"></div>
+                            <div style="position: relative;">
+                                {{#with IREOFiles address}}
+                                    {{#if youtube_video}}
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{getYoutubeVideoCode youtube_video}}" frameborder="0"
+                                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                        </div>
+                                    {{else}}
+                                        <img style="width: 100%;" src="/images/no_video_available.jpg" alt="">
+                                    {{/if}}
+                                {{/with}}
+                                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                                    {{#with IREOFiles address}}
+                                        <button data-toggle="modal" data-target="#youtube-url-modal" style="position: absolute; bottom: 0%; right: 0%;" class="btn btn-lg btn-primary">
+                                        {{#if youtube_video}} Edit Video {{else}} Add Video {{/if}}
+                                        </button>
+                                    {{/with}} 
+                                {{/if}}
+                            </div>
+
+                            <div class="spacer"></div>
+                            <div class="progress-details">
+                                <span>{{formatCurrency(fromWei amountRaised)}}</span>
+                                <span class="goal">/ {{formatCurrency(fromWei minFundingGoal)}}</span>
+                                <span class="raised">
+                                    {{contributorCount}}
+                                    {{#if isGreaterEqual minFundingGoal amountRaised}}
+                                        <i class="investors-icon success"></i>
+                                    {{else}}
+                                        <i class="investors-icon"></i>
+                                    {{/if}} {{percentFunded minFundingGoal amountRaised}}% FUNDED
+                                </span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="progress">
+                                {{#if isGreaterEqual minFundingGoal amountRaised}}
+                                    <div style="width: {{percentFunded minFundingGoal amountRaised}}%" class="progress-bar progress-bar-success" role="progressbar"
+                                        aria-valuenow="{{percentFunded minFundingGoal amountRaised}}" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                {{else}}
+                                    <div style="width: {{percentFunded minFundingGoal amountRaised}}%" class="progress-bar" role="progressbar" aria-valuenow="{{percentFunded minFundingGoal amountRaised}}"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                {{/if}}
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="progress-details">
+
+                                {{#if isDefaultAccountSellerOrTrustee seller trustee}}
+                                <div class="form-group">
+                                    {{#with IREOFiles address}}
+                                        {{#if editDescription}}
+                                            <textarea placeholder="Add a description here..." id="description" style="height: 100px;" class="form-control" value="{{description}}"></textarea>
+                                            {{else}}
+                                            {{#unless description}} 
+                                            <textarea placeholder="Add a description here..." id="description" style="height: 100px;" class="form-control" value="{{description}}"></textarea>                                            
+                                            {{else}}
+                                            <p id="description-text" style="height: auto" class="">{{#if latestEditText}}{{latestEditText}}{{else}}{{description}}{{/if}}</p>                                
+                                            {{/unless}}
+                                        {{/if}}
+                                    {{else}}
+                                    {{/with}}
+                                    <div class="spacer"></div>
+                                    {{#if editDescription}}
+                                    <button id="save-description" class="btn btn-primary pull-right">Save Changes</button>
+                        
+                                    {{else}}
+                                        {{#with IREOFiles address}}
+                                        {{#unless description}}
+                                        <button id="save-description" class="btn btn-primary pull-right">Save Changes</button>                                        
+                                        {{else}}
+                                        <button id="edit-description" class="btn btn-primary pull-right">Edit</button>
+                                        {{/unless}}
+                                        {{/with}}
+                                    {{/if}}                                    
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                                {{else}} 
+                                    {{#with IREOFiles address}}
+                                        {{#if description}}
+                                            {{description}} 
+                                        {{else}}
+                                            No description added. 
+                                        {{/if}} 
+                                    {{/with}}
+                                {{/if}}
+
+                            </div>
+                            <hr>
+                            <div class="row timer">
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="text-caption">TIME REMAINING:</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-8">
+                                    {{#if endTime}} {{> countdown endDate=endTime}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="spacer"></div>
+
+                    <div class="block left">
+                        <div class="content">
+                            {{> valuations}}
+                        </div>
+                    </div> -->
+
+                    <div class="spacer"></div>
+
+                    <div class="block left">
+                        <div class="content">
+                            {{> diligences ireoAddress=address}}
+                        </div>
+                    </div>
+
+                    <!-- <div class="spacer"></div>
+
+                    <div class="block left">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-6">
+                                    <h2 class="title">LRET INCOME/EXPENSE</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-6">
+                                    <span class="pull-right text-muted">2017</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="spacer"></div>
+
+                            <div class="row lret-income">
+                                <div class="col-md-12">
+                                    <img style="width: 100%;" src="/images/graph_list.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="spacer"></div>
+
+                            <div class="row lret-income">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="income-values">
+                                        <i class="fa fa-circle text-success"></i>
+                                        <span class="value">
+                                            <span>Income:</span>
+                                            <span class="text-success">11,294.11</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="income-values">
+                                        <i class="fa fa-circle text-danger"></i>
+                                        <span class="value">
+                                            <span>Expense:</span>
+                                            <span class="text-danger">11,294.11</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="income-values">
+                                        <i class="fa fa-circle text-muted"></i>
+                                        <span class="value">
+                                            <span>Net Income:</span>
+                                            <span class="text-muted">11,294.11</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> -->
+
+                    {{#unless trustee}} {{#if isEqual status 'Bidding'}}
+                    <div class="spacer"></div>
+                    <div class="block left">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-6">
+                                    <h2 class="title">Trustee Applications</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-6">
+                                    <span class="pull-right text-muted">{{bids.length}}</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="spacer"></div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Trustee</th>
+                                                <th>Fee Percentage</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each bid in bids}}
+                                            <tr>
+                                                <td>
+                                                {{getTrusteeName bid.bidder}}
+                                                </td>
+                                                <td>{{divide bid.basis 100}}%</td>
+                                                <td>
+                                                    <!-- {{#if currentUser}} -->
+                                                    {{#if isDefaultAccount seller}}
+                                                    <button data-ireo-address="{{address}}" data-bid-address="{{bid.bidder}}" class="btn btn-primary btn-sm transparent btn-select-bid"
+                                                        type="button">Select Bid</button>
+                                                    {{/if}}
+                                                    <!-- {{/if}} -->
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}} {{/unless}}
+
+                    <!-- <div class="spacer"></div>
+
+                    <div class="block left">
+                        <div class="content">
+
+                            {{> comments}}
+
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+
+                    <div class="block left right market-actions">
+                        <div class="content">
+
+                            {{#if isFunding}}
+                            <h2 class="title">BUY SHARES</h2>
+                            {{/if}}
+                            <div class="text-muted">START DATE:
+                                <span style="float:right">{{unixTimeToStr startTime}}</span>
+                            </div>
+                            <div class="text-muted">END DATE:
+                                <span style="float:right">{{unixTimeToStr endTime}}</span>
+                            </div>
+                            <br />
+                            <div class="text-muted">MY BALANCE:
+                                <span style="float:right">{{formatCurrency (fromWei tpegBalance)}}</span>
+
+                            </div>
+                            <br /> {{#if isFunding}} {{#if getRole}}
+                            <form>
+                                <!-- <div class="alert alert-info">Once the transaction confirms on the Set TPEG Allowance, click Buy Shares.</div> -->
+                                <div class="form-group">
+                                    <label>Number of Shares to Buy</label>
+                                    <input type="number" class="form-control" name="contribute-amount" id="contribute-amount" placeholder="Amount">
+                                </div>
+                                <button type="button" id="approve-contribute-ireo" class="btn btn-primary btn-block">Set TPEG Allowance</button>
+                                <button type="button" id="contribute-ireo" class="btn btn-primary btn-block">Buy Shares</button>
+                            </form>
+                            {{else}}
+                            <h5>You must register as an investor before you can participate in IREOS.</h5>
+                            <a class="nav" href="/entities/profile/profile">Register</a>
+                            {{/if}} {{/if}}
+                        </div>
+                    </div>
+
+                    {{#if seller}}
+                    <div class="spacer"></div>
+                    <div class="block left right">
+                        <div class="content">
+                            {{> sellerSidebarWidget user=seller}}
+                        </div>
+                    </div>
+                    {{/if}} {{#if trustee}}
+                    <div class="spacer"></div>
+                    <div class="block left right">
+                        <div class="content">
+                            {{> trusteeSidebarWidget user=trustee}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    {{else}}
+    <div class="row property-id">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">{{loadingMessage}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/with}}
+
+    <div class="modal fade" id="youtube-url-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Youtube Video URL</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="text" class="form-control" id="youtube-url">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button data-dismiss="modal" id="add-video" type="button" class="pull-right btn btn-primary">Add Video</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input class="hidden" type="file" id="upload-profile-image">
+
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().add(2, 'days');
+            var end = moment().add(17, 'days');
+
+            function cb(_start, _end) {
+                $('input[name="start_time"]').val(_start.format('YYYY-MM-DD hh:mm A'));
+                $('input[name="end_time"]').val(_end.format('YYYY-MM-DD hh:mm A'));
+            }
+
+            cb(start, end);
+
+            $('input[name="daterange"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 1,
+                timePicker24Hour: true,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                },
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    '1 Week': [moment().add(2, 'days'), moment().add(7, 'days').add(2, 'days')],
+                    '2 Weeks': [moment().add(2, 'days'), moment().add(14, 'days').add(2, 'days')],
+                    '3 Weeks': [moment().add(2, 'days'), moment().add(22, 'days').add(2, 'days')],
+                    '1 Month': [moment().add(2, 'days'), moment().add(1, 'month').add(2, 'days')],
+                    '2 Months': [moment().add(2, 'days'), moment().add(2, 'month').add(2, 'days')],
+                    '3 Months': [moment().add(2, 'days'), moment().add(3, 'month').add(2, 'days')]
+                }
+            }, function (_start, _end, label) {
+                cb(_start, _end);
+            });
+        });
+    </script>
+
+</template>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="76px" height="59px" viewBox="0 0 76 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Wallet Illustration@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="75.7294004%" x2="0%" y2="24.2389356%" id="linearGradient-1">
+            <stop stop-color="#FF7427" offset="0%"></stop>
+            <stop stop-color="#FFC73C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="LiquidRe-–-No-Wallet-Detected" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-681.000000, -128.000000)">
+        <g id="Wallet" transform="translate(298.000000, 83.000000)">
+            <g id="Wallet-Illustration" transform="translate(386.000000, 48.000000)">
+                <path d="M15.6666667,11 L70.3333333,11 C71.8060927,11 73,12.1939073 73,13.6666667 L73,50.6666667 C73,53.6121853 70.6121853,56 67.6666667,56 L23.6666667,56 C17.7756293,56 13,51.2243707 13,45.3333333 L13,13.6666667 C13,12.1939073 14.1939073,11 15.6666667,11 Z" id="Rectangle-3" fill="url(#linearGradient-1)" opacity="0.800000012"></path>
+                <g id="Group" opacity="0.25" transform="translate(9.000000, 19.000000)" stroke="#FFFFFF" stroke-width="2.44444444">
+                    <rect id="Rectangle-path" x="17.5710256" y="0" width="11.0497436" height="10.50525"></rect>
+                    <rect id="Rectangle-path" x="0" y="16.88525" width="11.0497436" height="10.50525"></rect>
+                    <rect id="Rectangle-path" x="0" y="0" width="11.0497436" height="10.50525"></rect>
+                    <polyline id="Shape" points="17.5710256 28.63025 17.5710256 16.88525 22.2258974 16.88525 22.2258974 19.9665 28.3605128 19.9665 28.3605128 16.124"></polyline>
+                    <path d="M21.6830769,27.12225 L28.6207692,27.12225" id="Shape"></path>
+                </g>
+                <g id="Icon" stroke-width="5.33333333">
+                    <path d="M49.235794,22.1176471 L49.235794,27.5402103 C49.2283756,29.5266459 50.8302943,31.1450038 52.8185217,31.1597045 L60.9999743,31.1597045 L60.9999743,43.3805058 C61.0073928,45.3669415 59.405474,46.9852994 57.4172467,47 L3.58275331,47 C1.59452599,46.9852994 -0.00739279076,45.3669415 2.56622499e-05,43.3805058 L2.56622499e-05,3.61949417 C-0.00739279076,1.63305854 1.59452599,0.0147006137 3.58275331,0 L57.4172467,0 C59.405474,0.0147006137 61.0073928,1.63305854 60.9999743,3.61949417 L60.9999743,18.511509 L52.8185217,18.511509 C50.8355188,18.5261847 49.2357396,20.1364172 49.235794,22.1176471 Z" id="Shape" stroke="#1875F0"></path>
+                    <path d="M65,18.0137131 L65,31 L52.6064119,31 C50.6050554,30.9849064 48.9925584,29.3232891 49.0000258,27.2837553 L49.0000258,21.7162447 C48.9925584,19.6767109 50.6050554,18.0150936 52.6064119,18 L65,18.0137131 Z" id="Shape" stroke="#358CFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

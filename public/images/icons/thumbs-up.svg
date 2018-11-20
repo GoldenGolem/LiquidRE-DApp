@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="13px" height="12px" viewBox="0 0 13 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>thumbs-up</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LiquidRe-–-IREO-Listing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-407.000000, -2027.000000)">
+        <g id="Detail" transform="translate(250.000000, 83.000000)" fill="#05C46B" fill-rule="nonzero">
+            <g id="Comments" transform="translate(0.000000, 1514.000000)">
+                <g id="Comment" transform="translate(24.000000, 270.000000)">
+                    <g id="Field" transform="translate(104.000000, 46.000000)">
+                        <g id="Thumbs" transform="translate(0.000000, 114.000000)">
+                            <path d="M42,5.40001449 C42,4.73702493 41.4711366,4.20001167 40.8181824,4.20001167 L37.0865931,4.20001167 L37.6503202,1.45862323 C37.6627292,1.39739308 37.6698202,1.33440494 37.6698202,1.26899878 C37.6698202,1.0205982 37.5705475,0.79559767 37.4098203,0.632997288 L36.7834569,0 L32.8917255,3.95161109 C32.6778165,4.1688056 32.5454529,4.4688063 32.5454529,4.80001308 L32.5454529,10.7999972 C32.5454529,11.4624587 33.0749072,12 33.7272706,12 L39.0454559,12 C39.5347284,12 39.9542737,11.6982593 40.1339099,11.2680583 L41.9166819,7.03618834 C41.9686818,6.90124802 42,6.75424767 42,6.59998731 L42,5.45104461 L42,5.40001449 Z M29,12 L31.3636353,12 L31.3636353,4.80001308 L29,4.80001308 L29,12 Z" id="thumbs-up"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,61 @@
+<template name="entitiesRegister">
+
+    <div class="row register-entities">
+        <div class="col-md-12 block">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title text-center">
+                        Interested in buying and selling real estate on the blockchain?
+                    </h2>
+                </div>
+                <div class="spacer"></div>
+                <div class="col-md-12">
+                    <h5 class="sub-title text-center">
+                        Let's get you started! Verify your wallet with MetaMask.
+                    </h5>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="spacer"></div>
+            {{#if metaMaskFound}}
+            {{#if metaMaskLoggedIn}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {{#if isLogginIn}}
+                        <div class="text-muted">{{loginMessage}}</div>
+                    {{/if}}
+                    <button id="eth-login" class="btn btn-primary transparent">
+                        <img style="width: 15px; height: auto" src="https://metamask.io/img/metamask.png"> Verify wallet with MetaMask
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            {{else}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    Log into MetaMask
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            {{/if}}
+            {{else}}
+            1. Get MetaMask
+            2. Login to MetaMask
+            3. Verify wallet with MetaMask
+            4. Verify accredited investor status
+            <p>Watch the video below to learn how to use LiquidRE or just download MetaMask and get started!</p>
+                <div class="btn_metamask">
+                    <a class="btn btn-primary" href="https://metamask.io/" target=_blank>Go Get Metamask</a>
+                </div>
+                <div class="video_mask">
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/6Gf_kRE4MJU?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+            {{/if}}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</template>

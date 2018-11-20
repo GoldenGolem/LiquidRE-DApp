@@ -1,0 +1,106 @@
+.portfolio {
+    margin: 0px;
+    .block {
+        background: #FFFFFF;
+        border-radius: 4px;
+    }
+    .list {
+        padding: 15px 0 0 0;
+        margin-top: 15px;
+        table.table {
+            thead {
+                th {
+                    opacity: 0.25;
+                    // font-family: Roboto;
+                    font-size: 12px;
+                    color: #000000;
+                    letter-spacing: 0;
+                    text-transform: uppercase;
+                }
+            }
+            thead > tr > th {
+                border-bottom: solid 2px #F1F1F1;
+                padding: 15px 25px;
+                vertical-align: middle;
+                font-family: Roboto;
+                font-weight: 500;
+            }
+            tbody > tr > td {
+                // font-family: Roboto;
+                font-size: 14px;
+                color: #000000;
+                border: none;
+                padding: 10px 25px;
+                vertical-align: middle;
+            }
+        }
+    }
+    .header {
+        .balance {
+            background-image: url('/images/icons/balance-icon.svg');
+            background-repeat: no-repeat;
+            background-position: left;
+            padding-left: 25px;
+            margin: 5px 0;
+            // font-family: Roboto;
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+        }
+        .btn-speg-faucet{
+            // font-family: Roboto;
+            font-size: 12px;
+            font-weight: 500;
+            border: 0;        
+        }
+    }
+    .values {
+        margin-top: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+        h2.title {
+            margin: 5px 0;
+            // font-family: Roboto;
+            font-size: 16px;
+            color: #000000;
+        }
+        .value-block {
+            padding: 5px 25px 5px 5px;
+            // font-family: Roboto;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: left;
+            .spacer {
+                height: 25px;
+            }
+            .caption {
+                padding: 10px;
+            }
+            .value {
+                padding-left: 5px;
+            }
+            .green {
+                color: #05C46B;
+                .caption {
+                    background: rgba(5, 196, 107, 0.10);
+                    border-radius: 4px;
+                }
+            }
+            .black {
+                color: #4A4A4A;
+                .caption {
+                    background: rgba(155, 155, 155, 0.15);
+                    border-radius: 4px;
+                }
+            }
+            .orange {
+                color: #F5A623;
+                .caption {
+                    background: rgba(245, 166, 35, 0.15);
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}

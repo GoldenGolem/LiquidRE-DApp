@@ -1,0 +1,37 @@
+.countdown {
+    background: #FFFFFF;
+    width: 100%;
+    .caption-ended {
+        color: #1875F0;
+        font-family: Roboto;
+        font-size: 20px;
+    }
+    ul {
+        padding: 0;
+        li {
+            color: #1875F0;
+            float: left;
+            list-style-type: none;
+            text-transform: uppercase;
+            width: 25%;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid lighten(#1875F0, 25%) ;
+            &.no-border-left {
+                border-left: none !important;
+            }
+            span.value {
+                display: block;
+                padding: 8px 8px 0px 8px;
+                font-family: Roboto;
+                font-size: 18px;
+            }
+            span.caption {
+                display: block;
+                padding: 0px 8px 8px 8px;
+                font-family: Roboto;
+                font-size: 8px;
+            }
+        }
+    }
+}

@@ -1,0 +1,188 @@
+
+
+.ireos-list {
+    margin: 0px;
+    .block {
+        background: #FFFFFF;
+        border-radius: 4px;
+    }
+    .header {
+        .nav {
+            li {
+                .badge {
+                    font-weight: 400;
+                    margin-left: -5px;
+                    margin-top: -15px;
+                }
+                &.active {
+                    a, a:hover, a:focus {
+
+                        font-weight: 500;
+                        opacity: 1;
+                        border-radius: 0;
+                        background: none;
+                        color: #000;
+                        .badge {
+                            color: #FFFFFF;
+                            background-color: #1875F0;
+                        }
+                    }
+                }
+                a {
+                    padding: 15px 15px;
+                }
+            }
+        }
+    }
+    .ireo {
+        font-family: Roboto;
+        margin-top: 15px;
+        padding: 15px 0;
+        progress {
+            width: 100%;
+        }
+        .timer {
+            width: 220px;
+            float: right;
+        }
+        .profile {
+            width: 240px;
+            height: 160px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .address {
+            font-size: 18px;
+        }
+        .apply-trustee-container {
+            margin-top: 10px;
+        }
+        .value {
+            font-size: 16px;
+            line-height: 24px;
+            .caption {
+                color: #000000;
+            }
+            .text {
+                color: #1875F0;
+            }
+        }
+        .progress-details {
+            font-size: 16px;
+            color: #000000;
+            .fa-users {
+                &.success {
+                    color: #37DB8E !important;
+                }
+                color: #1875F0;
+            }
+            .goal {
+                opacity: 0.25;
+            }
+            .raised {
+                float: right;
+            }
+            .input_custom {
+                label {
+                    font-weight: normal !important;
+                }
+            }
+        }
+        .show-bids {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .sponsor-profile {
+            .avatar {
+                width: 44px;
+                height:44px;
+            }
+            .user {
+                margin-right: 15px;
+                .name {
+                    font-size: 16px;
+                    color: #000000;
+                    line-height: 20px;
+                }
+            }
+            .legend {
+                span {
+                    text-align: center;
+                    padding: 5px 10px;
+                    color: #1875F0;
+                    background: rgba(#1875F0, 0.10);
+                    border-radius: 4px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    div.modal {
+        .btn {
+            .fa {
+                float: left;
+                margin-top: 5px;
+            }
+        }
+    }
+    div.modal#trustee-form {
+        font-family: Roboto;
+        h2.title {
+            font-weight: 700;
+            font-size: 20px;
+            color: #4A4A4A;
+            line-height: 26px;
+            text-align: center;
+        }
+        .documents {
+            .caption {
+                margin-left: 10px;
+                font-size: 14px;
+                color: #000000;
+            }
+            .size {
+                float: right;
+                font-weight: 500;
+                font-size: 14px;
+                color: #1875F0;
+                text-align: right;
+                margin-top: 3px;
+            }
+        }
+        .sponsor-profile {
+            .sponsor-details {
+                line-height: 20px;
+                font-size: 14px;
+                .caption {
+                    color: #000000;
+                }
+                .value {
+                    color: #1875F0;
+                }
+                .avatar {
+                    width: 44px;
+                }
+                .user {
+                    margin-left: 3px;
+                    .name {
+                        font-weight: 700;
+                        color: #000000;
+                    }
+                }
+            }
+        }
+    }
+
+    div.modal#edit-listing-form {
+        .profile-image {
+            width: 240px;
+        }
+    }
+    .bid-fee-warning{
+        margin-top: 40px;
+        opacity: 1 !important;    
+    }
+}

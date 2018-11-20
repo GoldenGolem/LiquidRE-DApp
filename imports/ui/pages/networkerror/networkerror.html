@@ -1,0 +1,12 @@
+<template name="networkerror">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 web3_login">
+            <h1>Error: Network Mismatch</h1>
+            <h3>This DApp has been designed to operate on the {{networkToName deployNetwork}}.</h3>
+            <h4>You are currently on: {{networkToName currentNetwork}}.</h4>
+            Please select the correct network on MetaMask to continue.
+        </div>
+        <div class="col-md-1"></div>        
+    </div>
+</template>

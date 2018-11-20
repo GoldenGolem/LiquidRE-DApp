@@ -1,0 +1,373 @@
+<template name="lretsID">
+    {{#with getLRETinfo}}
+    <div class="row property-id">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">{{name}}</h2>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-7">
+                            <div class="balance pull-right">
+                                {{formatNumber(fromWei myBalance)}} SHARES
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-sm-6 col-md-5">
+                            <div class="labels pull-right">
+                                <span class="label label-success">{{formatCurrency (fromWei (multiply myBalance (price getLRETinfo)))}}</span>
+                                <br /><br /><span class="label label-primary">{{formatNumber (percent myBalance totalSupply)}}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 details">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                    <div class="block left">
+                        <div class="content">
+                            <p>
+                                {{#if isTrading status}}
+                                <span class="text-success">Trading Enabled</span>
+                                {{else}}
+                                <span class="text-success">Trading Disabled</span>
+                                {{/if}} {{#if isTrusteeOwner getLRETinfo}} {{#if isTrading status}}
+                                <button data-address="{{address}}" class="btn btn-primary btn-sm btn-disable-conversion" type="button">Disable</button>
+                                {{else}}
+                                <button data-address="{{address}}" class="btn btn-primary btn-sm btn-enable-conversion" type="button">Enable</button>
+                                {{/if}} {{/if}}
+                            </p>
+                            {{#if isTrusteeOwner getLRETinfo}}
+                            <p>
+                                Dividends:
+                                <input id="dividends-amount" type="number" />
+                                <button class="btn btn-primary btn-sm btn-approve-dividends" type="button">Approve</button>
+                                <button class="btn btn-primary btn-sm btn-deposit-dividends" type="button">Deposit</button>
+                            </p>
+                            <p>
+                                Withdrawals:
+                                <input id="withdrawal-amount" type="number" />
+                                <button class="btn btn-primary btn-sm btn-request-withdrawal" type="button">Request Withdrawal</button>
+                                <button class="btn btn-primary btn-sm btn-withdraw" type="button">Withdraw</button>
+                                Withdrawal requests take 30 days to be available.
+                            </p>
+                            {{/if}}
+                        </div>
+                    </div>
+
+                    <div class="spacer" hidden></div>
+
+                    <div class="block left" hidden>
+                        <div class="content">
+
+                            {{> diligences ireoAddress=address}}
+
+                        </div>
+                    </div>
+
+                    <div class="spacer" ></div>
+                    <div class="block left" >
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="title">Price Chart</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{#if address}}
+                                    {{> priceChart lretAddress=address}}
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer" ></div>
+                    <div class="block left" >
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="title">Market Cap Chart</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{#if address}}
+                                    {{> marketCapChart lretAddress=address}}
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer" hidden></div>
+                    <div class="block left" hidden>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="width: 100%;" src="/images/graph_img.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+                    <div class="block left">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{#with IREOFiles address}} 
+                                        {{#if image}}
+                                            <img style="width: 100%;" src="{{fileLinkURL image}}">
+                                        {{else}}
+                                            <img style="width: 100%;" src="/images/no_image_available.jpeg">
+                                        {{/if}}
+                                    {{/with}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+                    <div class="block left">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{#with IREOFiles address}} 
+                                        {{#if youtube_video}}
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{getYoutubeVideoCode youtube_video}}" frameborder="0"
+                                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                        </div>
+                                        {{else}}
+                                        <img style="width: 100%;" src="/images/no_video_available.jpg" alt=""> 
+                                        {{/if}} 
+                                    {{/with}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="spacer" hidden></div>
+
+                    <div class="block left" hidden>
+                        <div class="content">
+
+                            {{> comments}}
+
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                    <div class="block left right">
+                        <div class="content figures">
+                            <div class="figure">
+                                <div class="caption">PRICE/SHARE:</div>
+                                <div class="value box">{{formatCurrency (price getLRETinfo)}}</div>
+                            </div>
+                            <div class="figure">
+                                <div class="caption">MARKET CAP</div>
+                                <div class="value">{{formatCurrency (marketCap getLRETinfo)}}</div>
+                            </div>
+                            <div class="figure">
+                                <div class="caption">SHARES ISSUED</div>
+                                <div class="value">{{formatNumber (fromWei totalSupply)}}</div>
+                            </div>
+                            <div class="figure">
+                                <div class="caption">MY BALANCE</div>
+                                <div class="value">{{formatCurrency (fromWei tpegBalance)}}</div>
+                            </div>
+                            <div class="figure">
+                                <div class="caption">APPROVED TPEGs</div>
+                                <div class="value">{{formatCurrency (fromWei allowance)}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="block left right market-actions">
+                        <ul class="nav nav-pills nav-justified">
+                            <li role="presentation" class="active">
+                                <a data-toggle="tab" href="#buy-tab">BUY</a>
+                            </li>
+                            <li role="presentation">
+                                <a data-toggle="tab" href="#sell-tab">SELL</a>
+                            </li>
+                            <li role="presentation">
+                                <a data-toggle="tab" href="#calculate-tab">CALCULATE</a>
+                            </li>
+                        </ul>
+
+                        <div class="content">
+                            <div class="tab-content">
+                                <div id="buy-tab" class="tab-pane fade in active">
+                                    {{#if getRole}}{{#if isTrading status}}
+                                    <!-- <div class="alert alert-info">Once the transaction confirms on the Approve TPEG, click Buy.</div> -->
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Amount</label>
+                                            <input type="number" class="form-control" id="lret-amount-buy-{{address}}">
+                                        </div>
+                                        <button data-address="{{address}}" type="button" class="btn btn-primary btn-send">Approve TPEG</button>
+                                        <button data-address="{{address}}" type="button" class="btn btn-primary btn-buy">Buy</button>
+                                    </form>
+                                    {{else}}
+                                    <div class="alert alert-danger">Disabled</div> {{/if}}
+                                    {{else}}                                    
+                                        <h5>You must register as an investor before you can buy or sell LRETS.</h5>
+                                        <a class="nav" href="/entities/profile/profile">Register</a>
+                                    {{/if}}
+                                </div>
+                                <div id="sell-tab" class="tab-pane fade">
+                                    {{#if getRole}}{{#if isTrading status}}
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Amount</label>
+                                            <input type="number" class="form-control" id="lret-amount-sell-{{address}}">
+                                        </div>
+                                        <button data-address="{{address}}" type="button" class="btn btn-primary btn-block btn-sell">Sell</button>
+                                    </form>
+                                    {{else}}
+                                    <div class="alert alert-danger">Disabled</div> {{/if}}
+                                    {{else}}                                    
+                                        <h5>You must register as an investor before you can buy or sell LRETS.</h5>
+                                        <a class="nav" href="/entities/profile/profile">Register</a>
+                                    {{/if}}
+                                </div>
+                                <div id="calculate-tab" class="tab-pane fade">
+                                    <form>
+                                        <div class="form-group">
+                                            <label>TPEG</label>
+                                            <input type="number" class="form-control" id="tpeg-amount-calc-{{address}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>LRET</label>
+                                            <input id="lret-amount-calc-{{address}}" type="number" class="form-control">
+                                        </div>
+                                        <button data-address="{{address}}" type="button" class="btn btn-primary btn-block btn-calc">Calc</button>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="block left right">
+                        <div class="content">
+                            {{#if getUser}}
+                                {{> trusteeSidebarWidget user=trustee}}
+                            {{/if}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="block left right">           
+                        <input type="button" class="btn btn-primary" value="{{showHideHistory}}" id="showHideHistory"> 
+                        {{#if showHideHistoryContent}} {{loadHistoryData}}
+                        <h2 class="title">Lret Events</h2>
+                        <table class="table" >
+                            <thead>
+                                <tr>
+                                    <th style="width: 200px">Address</th>
+                                    <th>Event Type</th>
+                                    <th>Amount</th>                                        
+                                    <th>Block Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each history in getLertHistoryData}}
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="{{getCurrentNetworkUrl}}{{history.address}}">{{history.address}}</a>            
+                                    </td>
+                                    <td>
+                                        {{history.event}}
+                                    </td>
+                                    <td>
+                                        {{history.amount}}
+                                    </td>
+                                    <td>
+                                        {{history.blockNumber}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <h2 class="title">Converter Events</h2>
+                        <table class="table" >
+                            <tbody>
+                                {{#each history in getConverterHistoryData}}
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="{{getCurrentNetworkUrl}}{{history.address}}">{{history.address}}</a>            
+                                    </td>
+                                    <td>
+                                        {{history.event}}
+                                    </td>
+                                    <td>
+                                        {{history.amount}}
+                                    </td>
+                                    <td>
+                                        {{history.blockNumber}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <h2 class="title">IREO Logic</h2>
+                        <table class="table" >
+                            <tbody>
+                                {{#each history in getireoHistoryData}}
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="{{getCurrentNetworkUrl}}{{history.address}}">{{history.address}}</a>            
+                                    </td>
+                                    <td>
+                                        {{history.event}}
+                                    </td>
+                                    <td>
+                                        {{history.amount}}
+                                    </td>
+                                    <td>
+                                        {{history.blockNumber}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        {{/if}}
+                   </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{else}}
+    <div class="row property-id">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">{{loadingMessage}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/with}}
+</template>

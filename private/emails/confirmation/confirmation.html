@@ -1,0 +1,58 @@
+<section class="email-body">
+  <section class="email-container">
+    {{> Email_Header}}
+    <section class="email-content-body">
+      <div>
+        {{> Email_Greetings name=emailDetails.name greetingType=emailDetails.greetingType
+        message=emailDetails.message messageFooterText=emailDetails.messageFooterText}}
+      </div>
+      <div class="add-bottom-line"></div>
+      <div class="confirmation-box">
+        <div class="image">
+          <img src="{{tradeImage}}">
+        </div>
+        <div class="description">
+          <h3>
+            Trade Liquid Real Estate Tokens
+          </h3>
+          <p>
+            Everyone realizes why a new common language would be desirable: one could refuse
+            to pay expensive translators.
+          </p>
+        </div>
+      </div>
+      <div class="confirmation-box">
+        <div class="description">
+          <h3>
+            IPO's for real estate
+          </h3>
+          <p>
+            The new common language will be more simple and regular than the existing European
+            languages.
+          </p>
+        </div>
+        <div class="image">
+          <img src="{{ipoSaleImage}}">
+        </div>
+      </div>
+      <div class="confirmation-box">
+        <div class="image">
+          <img src="{{tradeImage}}">
+        </div>
+        <div class="description">
+          <h3>
+            something else
+          </h3>
+          <p>
+            If several languages coalesce, the grammar of the resulting language is more simple
+            and regular than that of the individual languages.
+          </p>
+        </div>
+      </div>
+      <div class="add-bottom-line"></div>
+      {{#if emailDetails.actionDetails}} {{> Email_Action actionDetails=emailDetails.actionDetails}}
+      {{/if}}
+    </section>
+  </section>
+  {{> Email_Footer}}
+</section>

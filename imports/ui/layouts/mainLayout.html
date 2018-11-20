@@ -1,0 +1,99 @@
+<template name="mainLayout">
+
+	{{> head}}
+
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					    aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/">
+						<img class="logo" src="/images/logo_vector_white.svg">
+					</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						{{#unless currentUser}}
+						<li>
+							<a id="eth-login" style="color: white !important;">Verify Wallet</a>
+						</li>
+						{{/unless}} {{#if currentUser}}
+<!-- 						<li>
+							<a href="/notifications" class="notifications" style="color: white; font-size: 25px">
+								<i class="fa fa-bell-o" aria-hidden="true"></i>
+								{{#if isGreater notificationsCount 0 }}
+								<span class="badge">{{notificationsCount}}</span>
+								{{/if}}
+							</a>
+						</li> -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle nav-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<span class="user-name">
+									{{#if currentUser.profile.profileImage}}
+									<img src="{{fileLinkURL currentUser.profile.profileImage}}" class="avatar"> {{else}}
+									<img src="/images/user-icon.png" class="avatar"> {{/if}} {{currentUser.profile.name}} ({{metamaskNetwork}})
+									<span class="caret"></span>
+
+								</span>
+								<!-- <span class="caret"></span> -->
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">Wallet Address</li>
+								<li>
+									<span class="item-text">{{getWeb3AccountAddress}}</span>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="/entities/profile/profile">Profile</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="#" id="log-out">Logout</a>
+								</li>
+							</ul>
+						</li>
+						{{/if}}
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 hidden-xs">
+					{{> sidebar}}
+				</div>
+				<div class="col-xs-12 col-sm-12  col-md-10 ">
+					{{> yield}}
+
+					<div id="txModal" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">Transaction Status</h4>
+								</div>
+								<div class="modal-body" style="font-size: 14px;">
+									<p class="status"></p>
+									<p>Transaction Hash:
+										<span class="hash"></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			{{> footer}}
+		</div>
+		{{> footerscripts}}
+	</body>
+</template>

@@ -1,0 +1,31 @@
+{
+  "name": "liquidre_meteor",
+  "private": true,
+  "scripts": {
+    "ropsten": "MONGO_URL='mongodb://demolre:12b0otrTLa9J@ds129796.mlab.com:29796/demo-liquidre' meteor run --settings settings.json",
+    "start": "meteor run --settings settings.json",
+    "ganache": "meteor run --settings settings-ganache.json",
+    "local": "meteor run --settings settings-local.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
+    "angular": "^1.6.9",
+    "backblaze-b2": "https://github.com/teleport-palis/backblaze-b2/tarball/master",
+    "d3-dsv": "^1.0.8",
+    "d3-format": "^1.2.1",
+    "d3-scale": "^1.0.7",
+    "d3-time-format": "^2.1.1",
+    "ethereumjs-util": "^5.1.5",
+    "meteor-node-stubs": "^0.3.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.2.0",
+    "react-stockcharts": "^0.7.4",
+    "request": "^2.85.0",
+    "scrypt": "^6.0.3",
+    "simpl-schema": "^1.4.2",
+    "underscore": "^1.9.0",
+    "web3": "^1.0.0-beta.20"
+  }
+}

@@ -1,0 +1,14 @@
+<section class="email-body">
+  <section class="email-container">
+    {{> Email_Header headerImage=emailDetails.headerImage logo=emailDetails.logo}}
+    <section class="email-content-body">
+      <div>
+        {{> Email_Greetings name=emailDetails.name greetingType=emailDetails.greetingType
+        message=emailDetails.message messageFooterText=emailDetails.messageFooterText}}
+      </div>
+      {{#if emailDetails.actionDetails}} {{> Email_Action actionDetails=emailDetails.actionDetails}}
+      {{/if}}
+    </section>
+  </section>
+  {{> Email_Footer fbIcon=emailDetails.fbIcon twIcon=emailDetails.twIcon linkedInIcon=emailDetails.linkedInIcon}}
+</section>

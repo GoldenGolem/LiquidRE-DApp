@@ -1,0 +1,132 @@
+<template name="rent">
+    <div class="row portfolio">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">RENT Token</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 list block">
+
+            <div class="col-md-10">
+                <p>The LiquidRE Network Token (RENT) receives 1% of the income deposits from properties on the platform. RENT
+                    is a Smart Token with a connector of USD/PEG. This income is deposited into RENT's connector balance
+                    of USD/PEGs. These deposits are smoothed out using per-block calculations to avoid sudden price changes.</p>
+            </div>
+            <div class="col-md-2">
+                <img src="/images/RENT_icon.png" alt="" width="80%">
+            </div>
+
+
+            <div class="col-md-6 list block">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Your USD/PEG Balance</td>
+                            <td>{{formatNumber (fromWei tpegBalance)}} USD/PEG</td>
+                        </tr>
+                        <tr>
+                            <td>Your RENT Balance</td>
+                            <td>{{formatNumber (fromWei getRENTBalance)}} RENT</td>
+                        </tr>
+                        <tr>
+                            <td>RENT/USD/PEG</td>
+                            <td>{{formatCurrency getPrice}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total RENT Supply</td>
+                            <td>{{formatNumber (fromWei getRENTSupply)}} RENT</td>
+                        </tr>
+                        <tr>
+                            <td>RENT Market Cap</td>
+                            <td>{{formatCurrency (divide (fromWei getConnectorBalance) (divide getRENTWeight 1000000))}}</td>
+                        </tr>
+                        <tr>
+                            <td>USD/PEG Connector Weight</td>
+                            <td>{{formatNumber (divide getRENTWeight 10000)}}%</td>
+                        </tr>
+                        <tr>
+                            <td>Connector Balance</td>
+                            <td>{{formatCurrency (fromWei getConnectorBalance)}} USD/PEG</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content">
+                <form id="frm-Exchange">
+                    <div class="col-md-5 list block">
+                        <div class="block left right market-actions">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>{{getExchangeFrom}}</label>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <a href="#" id="exchangeValue">
+                                        <img src="/images/icons/arrow2.svg">
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <label>{{getExchangeTo}}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5  block">
+                                    <input type="number" class="form-control toplinespace" id="from-amount" placeholder="Spend" step="any">
+                                </div>
+                                <div class="col-md-2  block toplinespace">
+                                    <img src="/images/icons/arrow.svg">
+                                </div>
+                                <div class="col-md-5  block">
+                                    <input type="number" class="form-control toplinespace" id="to-amount" placeholder="Receive" step="any">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3  block">
+                                </div>
+                                <div class="col-md-6  list">
+                                    <input type="button" id="buySellConvertButton" class="btn btn-primary btn-block" value="Convert" disabled={{getRole}}>
+                                </div>
+                                <div class="col-md-3  block">
+                                </div>
+                            </div>
+                            {{#if getRole}}
+                            <div class="row">
+                                <div class="col-md-12  block">
+                                    <h5>You must register as an investor before you can buy or sell RENT.</h5>
+                                    <a class="nav" href="/entities/profile/profile">
+                                        <input type="button" value="Register" class="btn btn-primary">
+                                    </a>
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="title">Price Chart</h2>
+        </div>
+        <div class="col-md-12">
+            {{#if address}} {{> priceChart lretAddress=address}} {{/if}}
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="title">Market Cap Chart</h2>
+        </div>
+        <div class="col-md-12">
+            {{#if address}} {{> marketCapChart lretAddress=address}} {{/if}}
+        </div>
+    </div>
+</template>

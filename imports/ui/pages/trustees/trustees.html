@@ -1,0 +1,70 @@
+<template name="trustees">
+    <div class="row trustees-list">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">Trustees</h2>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <div class="pull-right">
+                        {{#if currentUser}}
+                            {{#if inRole 'Trustee' }}
+                                <a href="/trustees/dashboard" class="btn btn-primary">Trustee Dashboard</a>
+                            {{/if}}
+                            {{#if noTrusteeApplication currentUser}}                            
+                                <a href="/trustees/register" class="btn btn-primary btn-smartlaw-primary">Register as trustee</a>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 list block">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name & Wallet Address</th>
+                        <th>Mailing Address</th>
+                        <th>Date Registered</th>
+                        <th hidden>Rating</th>
+                        <th hidden></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each trustee in getTrustees}}
+                    <tr>
+                        <td>
+                            {{trustee.name}}
+                            <br>
+                            {{trustee.address}}
+                        </td>
+                        <td>{{trustee.mailingAddress}}</td>
+                        <td>
+                            {{unixTimeToStr trustee.created}}
+                        </td>
+                        <td hidden>
+                            <img src="/images/icons/star.svg" alt="">
+                            <img src="/images/icons/star.svg" alt="">
+                        </td>
+                        <td hidden>
+                            <a href="/trustees/{{trustee.wallet}}" class="btn btn-primary btn-sm transparent">VIEW TRUSTS</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    <!-- <tr>
+                        <td><input form="add-new-trustee" type="text" name="address"></td>
+                        <td><input form="add-new-trustee" type="text" name="name"></td>
+                        <td><input form="add-new-trustee" type="text" name="mailingAddress"></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><form id="add-new-trustee" onsubmit="return false"><button type="submit" class="btn btn-primary btn-sm btn-add-trustee">Add</button></form></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</template>

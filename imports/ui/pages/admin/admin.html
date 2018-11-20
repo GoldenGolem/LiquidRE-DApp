@@ -1,0 +1,436 @@
+<template name="admin">
+    <div class="ui_r_sidebar">
+        <ul class="list-group">
+            <li class="list-group-item input_custom">
+                Your Roles: {{getRoles}}
+            </li>
+            <li class="list-group-item input_custom">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Address</th>
+                            <th>Name</th>
+                            <th>Mailing Address</th>
+                            <th>Country Code</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trustee</td>
+                            <td>
+                                <input form="add-new-trustee" type="text" name="address">
+                            </td>
+                            <td>
+                                <input form="add-new-trustee" type="text" name="name">
+                            </td>
+                            <td>
+                                <input form="add-new-trustee" type="text" name="mailingAddress">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-trustee" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Investor</td>
+                            <td>
+                                <input form="add-new-investor" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input form="add-new-investor" type="number" name="countryCode">
+                            </td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-investor" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Seller</td>
+                            <td>
+                                <input form="add-new-seller" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-seller" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Administrator</td>
+                            <td>
+                                <input form="add-new-administrator" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-administrator" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Manager</td>
+                            <td>
+                                <input form="add-new-manager" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-manager" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Verifier</td>
+                            <td>
+                                <input form="add-new-verifier" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <form id="add-new-verifier" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PEGs</td>
+                            <td>
+                                <input form="issue-tpegs" type="text" name="address">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input form="issue-tpegs" type="number" name="amount">
+                            </td>
+                            <td>
+                                <form id="issue-tpegs" onsubmit="return false">
+                                    <button type="submit" class="btn btn-primary btn-sm">Issue</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="list-group-item input_custom">
+                <form id="delete-me" onsubmit="return false">Remove your wallet from its roles:
+                    <button type="submit" class="btn btn-primary btn-sm">Delete Me</button>
+                </form>
+            </li>
+            <li class="list-group-item input_custom">
+                <h2>Trustees</h2>
+
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class="active">
+                        <a data-toggle="tab" href="#registered-trustee-tab">Registered</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#applicants-trustee-tab">Applicants</a>
+                    </li>
+                </ul>
+
+
+
+                <div class="content">
+                    <div class="spacer"></div>
+                    <div class="tab-content">
+
+                        <div id="registered-trustee-tab" class="tab-pane fade in active">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Address</th>
+                                        <th>Name</th>
+                                        <th>Mailing Address</th>
+                                        <th>Registered</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each trustee in getTrustees}}
+                                    <tr>
+                                        <td>{{trustee.address}}</td>
+                                        <td>{{trustee.name}}</td>
+                                        <td>{{trustee.mailingAddress}}</td>
+                                        <td>{{unixTimeToStr trustee.created}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="applicants-trustee-tab" class="tab-pane fade">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Wallet</th>
+                                        <th>Address</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each user in getTrusteeApplicants}}
+                                    <tr>
+                                        <td>
+                                            {{#if user.profile.profileImage}}
+                                            <img style="width: 50px;" src="{{fileLinkURL user.profile.profileImage}}" class="avatar"> {{else}}
+                                            <img style="width: 50px;" src="/images/user-icon.png" class="avatar"> {{/if}}
+                                            <br> {{user.trustee_application.name}}
+                                        </td>
+                                        <td>{{user.username}}</td>
+                                        <td>{{user.trustee_application.mailing_address}}</td>
+                                        <td>
+                                            {{#if isAdmin}}
+                                            <button data-address="{{user.username}}" data-name="{{user.trustee_application.name}}" data-mailingaddress="{{user.trustee_application.mailing_address}}"
+                                                class="btn btn-sm btn-primary btn-verify-trustee">Verify</button>
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </li>
+            <li class="list-group-item input_custom">
+                <h2>Investors</h2>
+
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class="active">
+                        <a data-toggle="tab" href="#registered-investor-tab">Registered</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#applicants-investor-tab">Applicants</a>
+                    </li>
+                </ul>
+
+
+
+                <div class="content">
+                    <div class="spacer"></div>
+                    <div class="tab-content">
+
+                        <div id="registered-investor-tab" class="tab-pane fade in active">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Address</th>
+                                        <th>Country Code</th>
+                                        <th>Registered</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each investor in getInvestors}}
+                                    <tr>
+                                        <td>{{investor.address}}</td>
+                                        <td>{{investor.countryCode}}</td>
+                                        <td>{{unixTimeToStr investor.created}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="applicants-investor-tab" class="tab-pane fade">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each user in getInvestorApplicants}}
+                                    <tr>
+                                        <td>
+                                            {{#if user.profile.profileImage}}
+                                            <img style="width: 50px;" src="{{fileLinkURL user.profile.profileImage}}" class="avatar"> {{else}}
+                                            <img style="width: 50px;" src="/images/user-icon.png" class="avatar"> {{/if}}
+                                            <br> {{user.profile.name}}
+                                        </td>
+                                        <td>
+                                            {{user.emails.[0].address}}
+                                        </td>
+                                        <td>
+                                            {{user.profile.address1}} {{user.profile.address2}}
+                                            <br> {{user.profile.city}} {{#with getCountryByCode user.profile.country}} {{alpha3}}
+                                            {{/with}} {{user.profile.postal}}
+                                        </td>
+                                        <td>
+                                            {{#if isAdmin}}
+                                            <button data-country="{{user.profile.country}}" data-address="{{user.username}}" class="btn btn-sm btn-primary btn-verify-investor">Verify</button>
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </li>
+            <li class="list-group-item input_custom">
+                <h2>Sellers</h2>
+
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class="active">
+                        <a data-toggle="tab" href="#registered-seller-tab">Registered</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#applicants-seller-tab">Applicants</a>
+                    </li>
+                </ul>
+
+
+                <div class="content">
+                    <div class="spacer"></div>
+                    <div class="tab-content">
+
+                        <div id="registered-seller-tab" class="tab-pane fade in active">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Address</th>
+                                        <th>Registered</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each seller in getSellers}}
+                                    <tr>
+                                        <td>{{seller.address}}</td>
+                                        <td>{{unixTimeToStr seller.created}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="applicants-seller-tab" class="tab-pane fade">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each user in getSellerApplicants}}
+                                    <tr>
+                                        <td>
+                                            {{#if user.profile.profileImage}}
+                                            <img style="width: 50px;" src="{{fileLinkURL user.profile.profileImage}}" class="avatar"> {{else}}
+                                            <img style="width: 50px;" src="/images/user-icon.png" class="avatar"> {{/if}}
+                                            <br> {{user.profile.name}}
+                                        </td>
+                                        <td>
+                                            {{user.emails.[0].address}}
+                                        </td>
+                                        <td>
+                                            {{user.profile.address1}} {{user.profile.address2}}
+                                            <br> {{user.profile.city}} {{#with getCountryByCode user.profile.country}} {{alpha3}}
+                                            {{/with}} {{user.profile.postal}}
+                                        </td>
+                                        <td>
+                                            {{#if isAdmin}}
+                                            <button data-address="{{user.username}}" class="btn btn-sm btn-primary btn-verify-seller">Verify</button>
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </li>
+            <li class="list-group-item input_custom">
+                <h2>Administrators/Managers</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each administrator in getAdministrators}}
+                        <tr>
+                            <td>{{administrator.address}}</td>
+                            <td>Administrator</td>
+                        </tr>
+                        {{/each}} {{#each manager in getManagers}}
+                        <tr>
+                            <td>{{manager.address}}</td>
+                            <td>Manager</td>
+                        </tr>
+                        {{/each}} {{#each verifier in getVerifiers}}
+                        <tr>
+                            <td>{{verifier.address}}</td>
+                            <td>Verifier</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <div class="spacer"></div>
+        <div>
+            <label>Initialize RENT</label>
+            <form id="frm-init-rent" onsubmit="return false">
+                <div class="form-group">
+                    <label>TPEG</label>
+                    <input type="number" id="init-rent-tpeg-amount" class="form-control" name="tpeg">
+                </div>
+                <div class="form-group">
+                    <label>RENT</label>
+                    <input type="number" class="form-control" name="rent">
+                </div>
+                <div class="form-group">
+                    <label>WEIGHT (ppm)</label>
+                    <input type="number" class="form-control" name="weight">
+                </div>
+                <button type="button" class="btn-approve-init-rent btn btn-primary btn-block">APPROVE</button>
+                <button type="submit" class="btn btn-primary btn-block">INIT</button>
+            </form>
+        </div>
+    </div>
+</template>

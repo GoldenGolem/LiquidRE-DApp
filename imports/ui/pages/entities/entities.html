@@ -1,0 +1,51 @@
+<template name="entities">
+    <div class="row trustees-list">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">Entities</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 list block">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Wallet Address</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each entity in getEntities}}
+                    <tr>
+                        <td>{{entity.username}}</td>
+                        <td>
+                            <img style="width: 50px;" src="{{entity.profile.profileImage}}" alt="">
+                            <br>
+                            {{entity.profile.name}}
+                        </td>
+                        <td>
+                            {{entity.profile.address1}} 
+                            {{entity.profile.address2}} 
+                            {{#with getCountryByCode entity.profile.country}}
+                                {{alpha3}} 
+                            {{/with}}
+                            {{entity.profile.postal}} 
+                        </td>
+                        <td>
+                            {{#unless entity.verified}}
+                                <button data-country="{{entity.profile.country}}" data-address="{{entity.username}}" class="btn btn-sm btn-primary btn-verify">Verify</button>
+                            {{/unless}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</template>

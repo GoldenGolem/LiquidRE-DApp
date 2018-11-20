@@ -1,0 +1,269 @@
+<template name="ireosPending">
+  <div class="row ireos-list">
+
+    {{> ireosMenu activeMenu="pending"}}
+    <div class="col-md-12">
+      {{#each ireo in getIREOInfo}} {{#if isIREODataReady ireo}}
+      <!-- <a href="/ireos/{{ireo.address}}"> -->
+        <div class="row ireo block">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div class="profile">
+              <a href="/ireos/{{ireo.address}}">
+              {{#with IREOFiles ireo.address}}
+                {{#if image}}
+                  <img src="{{fileLinkURL image}}">                                  
+                {{else}}
+                  <img src="/images/no_image_available.jpeg">               
+                {{/if}}
+              {{/with}}
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-12 spacer hidden-sm hidden-md hidden-lg"></div>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+
+            <div class="row">
+
+              <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                <div style="margin-left: 15px;">
+                  <div class="address">
+                    <a href="/ireos/{{ireo.address}}">
+                      {{ireo.name}} 
+                    </a>
+                  </div>
+                  <div class="spacer hidden-xs"></div>
+                  {{ > people ireo }}
+                  <div class="spacer"></div>
+
+                  <div class="apply-trustee-container">
+                    {{#unless ireo.trustee}}
+                    {{#if currentUser}}
+                      {{#if isTrusteeOwner}}
+                        <button id="applyAsTrustee" data-address="{{ireo.address}}" data-toggle="modal" data-target="#trustee-form" class="apply-trustee btn btn-primary btn-smartlaw-primary">APPLY AS TRUSTEE</button>
+                      {{/if}}
+                    {{/if}}
+                    {{/unless}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div class="timer">
+                  {{#if ireo.endTime}}
+                    {{> countdown endDate=ireo.endTime}}
+                  {{/if}}
+                </div>
+                <div class="clearfix"></div>
+                <div class="spacer"></div>
+                <div class="spacer"></div>
+                <div class="spacer hidden-xs"></div>
+                <div class="spacer hidden-xs"></div>
+                <div class="progress-details">
+                  <div class="value">
+                    <span class="caption">Bids:</span>
+                    <span class="text">
+                      {{#if ireo.bids}}
+                        {{ireo.bids.length}}
+                      {{else}}
+                      0
+                      {{/if}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      <!-- </a> -->
+      {{/if}} {{/each}}
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="modal fade" id="trustee-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{#if showTrusteeFormMessage}}
+            <h4 class="modal-title" id="myModalLabel">THIS IS A PUBLIC BID</h4>
+            {{else}}
+            <h4 class="modal-title" id="myModalLabel">APPLY AS TRUSTEE</h4>
+            {{/if}}
+          </div>
+
+          {{#if showTrusteeFormMessage}}
+          <div class="modal-body">
+            <div class="text-center">
+              Are you sure you want to continue?
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="spacer"></div>
+            <button id="back-apply-trustee" type="button" class="btn btn-primary btn-smartlaw-primary transparent">BACK</button>
+            <button id="do-apply-trustee" type="button" class="btn btn-primary btn-smartlaw-primary">APPLY</button>
+            <div class="spacer"></div>
+          </div>
+          {{else}}
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col-xs-6 col-sm-5 col-md-5">
+                  <div class="form-group">
+                    {{#if getTrusteeCurrentBid}}
+                    <label>CURRENT BID</label>
+                    <h4 class="modal-title">{{getTrusteeCurrentBid}}%</h4>
+                      <label>NEW BID</label>
+                    {{else}}
+                      <label>TRUSTEE FEES</label>
+                    {{/if}}
+                    <div class="input-group">
+                      <input id="bid-fee" type="number" class="form-control" min="0" max="100">
+                      <div class="input-group-addon">%</div>
+                    </div>
+                  </div>                  
+                </div>
+                <div class="col-xs-6 col-sm-5 col-md-5">
+                {{#if showBidFeeWarningMsg}}
+                  <label class="text-danger bid-fee-warning" id="bid-fee-warningMsg">Enter a bid between 0 and 100!</label>  
+                {{/if}}           
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="row hidden">
+                <div class="col-xs-12 col-md-12">
+                  <div class="form-group">
+                    <label>COVER LETTER</label>
+                    <textarea class="form-control" cols="30" rows="5"></textarea>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+
+            <div class="row hidden">
+              <div class="col-md-12">
+                <button class="btn btn-lg btn-primary btn-block transparent border-dashed">
+                  <i class="fa fa-upload"></i>
+                  UPLOAD DOCUMENTS FOR SELLER
+                </button>
+              </div>
+            </div>
+
+            <!-- <div class="spacer"></div>
+            <div class="spacer"></div> -->
+
+            <div class="row documents hidden">
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <button class="btn btn-lg btn-primary btn-block transparent">
+                  <span class="pull-left">
+                    <img src="/images/icons/doc-pdf.svg" alt="">
+                    <span class="caption">Survey.pdf</span>
+                  </span>
+                  <span class="size">1.2 MB</span>
+                </button>
+              </div>
+              <div class="col-xs-12 spacer hidden-sm hidden-md hidden-lg"></div>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <button class="btn btn-lg btn-primary btn-block transparent">
+                  <span class="pull-left">
+                    <img src="/images/icons/doc-pdf.svg" alt="">
+                    <span class="caption">Appraisals.pdf</span>
+                  </span>
+                  <span class="size">1.9 MB</span>
+                </button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- <div class="spacer"></div>
+            <div class="spacer"></div> -->
+            <hr>
+
+            <div class="row sponsor-profile">
+              <div class="col-md-12">
+                <h2 class="title">SELLER PROFILE</h2>
+              </div>
+              <div class="col-md-12">
+                <div class="spacer"></div>
+                <div class="spacer"></div>
+              </div>
+
+              {{#with getUser}}
+              {{getSellerAllIreos profile.username}}
+              <div class="col-md-12 sponsor-details">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-3 col-md-3 no-padding right">
+                    {{#if profile.profileImage}}
+                      <img class="avatar pull-left" src="{{fileLinkURL profile.profileImage}}">
+                    {{else}}
+                      <img class="avatar pull-left" src="/images/user-icon.png">                    
+                    {{/if}}
+
+                    <div class="pull-left user">
+                      <div class="name">{{profile.name}}</div>
+                      <!-- <div class="rating">
+                        <img src="/images/icons/star.svg">
+                        <img src="/images/icons/star.svg">
+                      </div> -->
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="col-xs-6 col-sm-3 col-md-3 no-padding right">
+                    <div class="caption">Deals Sponsored:</div>
+                    <div class="value text-primary">{{getSellerSponsored}}</div>
+                  </div>
+                  <div class="col-xs-6 col-sm-3 col-md-3 no-padding right">
+                    <div class="caption">Deals Funded:</div>
+                    <div class="value  text-primary">{{getSellerFunded}}</div>
+                  </div>
+                  <div class="col-xs-6 col-sm-3 col-md-3 no-padding right">
+                    <div class="caption">Success Rate:</div>
+                    <div class="value text-success">{{getSellerSuccessRate}}%</div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="spacer"></div>
+                  </div>
+<!--
+                  <div class="col-xs-6">
+                    <button class="btn btn-primary btn-block transparent">VIEW PROFILE</button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button class="btn btn-primary btn-block transparent">VIEW HISTORY</button>
+                  </div>
+-->
+                </div>
+              </div>
+              {{/with}}
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="spacer"></div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="spacer"></div>
+            <button id="next-apply-trustee" type="button" class="btn btn-primary btn-smartlaw-primary" disabled={{showBidFeeWarningMsg}}>APPLY AS TRUSTEE</button>
+            <div class="spacer"></div>
+          </div>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>

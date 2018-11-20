@@ -1,0 +1,257 @@
+<template name="entitiesProfile">
+
+    <div class="row register-entities">
+        <div class="col-md-12 block">
+
+            <ul class="nav nav-tabs nav-justified">
+                
+                <li role="presentation" class={{class_id 'profile'}}>
+                    <a  href="/entities/profile/profile">Verify Identity</a>
+                </li>
+                
+                <li role="presentation" class={{class_id 'seller'}}>
+                    <a href="/entities/profile/seller">As Seller</a>
+                </li>
+                
+                
+                <li role="presentation" class={{class_id 'trustee'}}> 
+                    <a href="/entities/profile/trustee">As Trustee</a>
+                </li>
+                
+                <li role="presentation" class={{class_id 'investor'}}>
+                    <a href="/entities/profile/investor">As Investor</a>
+                </li>
+                
+            </ul>
+
+            <div class="content">   
+                <div class="spacer"></div>
+                <div class="tab-content">
+                    
+                    <div id="seller-tab" class="tab-pane fade {{fade_class_id 'seller'}}">
+                    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="title text-center">
+                                    Seller
+                                </h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="spacer"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{#with applicationStatus}} {{#if isEqual seller_status 'Pending'}}
+                                <div class="alert alert-info" role="alert">{{seller_status}}</div>
+                                {{else if isEqual seller_status 'Verified'}}
+                                <div class="alert alert-success" role="alert">{{seller_status}}</div>
+                                {{else}}
+                                <div class="alert alert-danger" role="alert">Not Applied</div>
+                                <div class="text-center">
+                                    <button data-field="seller" class="btn-rgstr btn btn-lg btn-primary">Register as Seller</button>
+                                </div>
+                                {{/if}} {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="trustee-tab" class="tab-pane fade {{fade_class_id 'trustee'}}">
+                    
+                    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="title text-center">
+                                    Trustee
+                                </h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="spacer"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{#with applicationStatus}} {{#if isEqual trustee_status 'Pending'}}
+                                <div class="alert alert-info" role="alert">{{trustee_status}}</div>
+                                {{else if isEqual trustee_status 'Verified'}}
+                                <div class="alert alert-success" role="alert">{{trustee_status}}</div>
+                                {{else}}
+                                <div class="alert alert-danger" role="alert">Not Applied</div>
+                                <div class="text-center">
+                                    <a href="/trustees/register" class="btn btn-lg btn-primary">Register as Trustee</a>
+                                </div>
+                                {{/if}} {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="investor-tab" class="tab-pane fade {{fade_class_id 'investor'}}">
+                    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="title text-center">
+                                    Investor
+                                </h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="spacer"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{#with applicationStatus}} {{#if isEqual investor_status 'Pending'}}
+                                <div class="alert alert-info" role="alert">{{investor_status}}</div>
+                                {{else if isEqual investor_status 'Verified'}}
+                                <div class="alert alert-success" role="alert">{{investor_status}}</div>
+                                {{else}}
+                                <div class="alert alert-danger" role="alert">Not Applied</div>
+                                <div class="text-center">
+                                    <button data-field="investor" class="btn-rgstr btn btn-lg btn-primary">Register as Investor</button>
+                                </div>
+                                {{/if}} {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="profile-tab" class="tab-pane fade {{fade_class_id 'profile'}}">
+                    
+                    
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="title text-center">
+                                    Verify Identity
+                                </h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="spacer"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="entity-add-form">
+                                    <div class="form-group">
+                                        <label>Profile Image</label>
+                                        {{#if profileImage}}
+                                        <img src="{{fileLinkURL profileImage}}" class="img-responsive profile-image"> {{else}} {{#if currentUser.profile.profileImage}}
+                                        <img src="{{fileLinkURL currentUser.profile.profileImage}}" class="img-responsive profile-image"> {{else}}
+                                        <img src="/images/user-icon.png" class="img-responsive profile-image"> {{/if}} {{/if}} {{#with currentProfileUpload}}
+                                        <div class="text-muted upload-progress">
+                                            <i class="fa fa-spinner fa-spin"></i> Uploading
+                                            <span id="progress">{{progress.get}}%</span>
+                                        </div>
+                                        {{else}}
+                                        <button type="button" class="btn btn-sm btn-link" id="select-profile-image">Select Image</button>
+                                        <input class="hidden" type="file" id="upload-profile-image"> {{/with}}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Legal Entity Type</label>
+                                        <select value="{{currentUser.profile.category}}" class="form-control" name="entity_category">
+                                            <option value="0">Individual</option>
+                                            <option value="1">LLC</option>
+                                            <option value="2">C Corp.</option>
+                                            <option value="3">S Corp.</option>
+                                            <option value="4">LLP</option>
+                                            <option value="5">Trust</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input value="{{currentUser.profile.name}}" type="text" name="name" class="form-control" placeholder="John Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        {{#if disableEmail}}
+                                        <input value="{{getUserEmail}}" type="email" name="email" class="form-control" disabled> {{else}}
+                                        <input id="emailInput" value="{{getUserEmail}}" type="email" name="email" class="form-control" placeholder="Enter your email"> {{/if}}
+                                        {{#if emailInUse}}
+                                            <div style="color:red">Email is already in use</div>
+                                        {{/if}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Country of Residence</label>
+                                        <select value="{{currentUser.profile.country}}" class="form-control" name="country">
+                                            <option value="">Select Country</option>
+                                            {{#each countries}} {{#if isCountrySelected code}}
+                                            <option selected value="{{code}}">{{name}}</option>
+                                            {{else}}
+                                            <option value="{{code}}">{{name}}</option>
+                                            {{/if}} {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Physical Address</label>
+                                        <input value="{{currentUser.profile.address1}}" type="text" name="address1" class="form-control" placeholder="Enter Street Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mailing Address</label>
+                                        <input value="{{currentUser.profile.address2}}" type="text" name="address2" class="form-control" placeholder="Enter Street Address">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input value="{{currentUser.profile.city}}" type="text" name="city" class="form-control" placeholder="Enter City">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Postal Code/Zip</label>
+                                                <input value="{{currentUser.profile.postal}}" type="text" name="postal" class="form-control" placeholder="Enter Postal Code/Zip">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer"></div>
+                                    <div class="upload-box">
+                                        <div id="upload-box" class="box position-center text-center">
+                                            {{#if imageID}}
+                                            <img src="{{fileLinkURL imageID}}" class="img-responsive image-id"> {{else}} {{#if currentUser.profile.imageID}}
+                                            <img src="{{fileLinkURL currentUser.profile.imageID}}" class="img-responsive image-id"> {{else}}
+                                            <div>
+                                                <i class="fa fa-upload"></i>
+                                            </div>
+                                            <div class="text-message">
+                                                Upload Government Issued Photo ID
+                                            </div>
+                                            {{/if}} {{/if}}
+
+                                            <div class="spacer"></div>
+                                        </div>
+                                        <input class="hidden" id="image-id" type="file" />
+                                    </div>
+                                    <div class="spacer"></div>
+                                    <div class="spacer"></div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary btn-smartlaw-primary" disabled='{{emailInUse}}'>Submit</button>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</template>

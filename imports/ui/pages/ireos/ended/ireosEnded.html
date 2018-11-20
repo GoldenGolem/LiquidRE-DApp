@@ -1,0 +1,83 @@
+<template name="ireosEnded">
+
+    <div class="row ireos-list">
+
+      {{> ireosMenu activeMenu="ended"}}
+
+      <div class="col-md-12">
+        {{#each ireo in getIREOInfo}}
+        {{#if isIREODataReady ireo}}
+        <a href="/ireos/{{ireo.address}}">
+          <!-- {{#unless ireo.trusteeWithdraw}} -->
+          <div class="row ireo block">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+              <div class="profile">
+                {{#with IREOFiles ireo.address}}
+                  {{#if image}}
+                    <img src="{{fileLinkURL image}}">                                  
+                  {{else}}
+                    <img src="/images/no_image_available.jpeg">               
+                  {{/if}}
+                {{/with}}
+              </div>
+            </div>
+            <div class="col-xs-12 spacer hidden-sm hidden-md hidden-lg"></div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+
+              <div class="row">
+
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                  <div style="margin-left: 15px;">
+                    <div class="address">
+                      {{ireo.name}}
+                    </div>
+                    <div class="spacer hidden-xs"></div>
+                    {{> people ireo}}
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                  <div class="timer">
+                    {{> countdown endDate=ireo.endTime}}
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="spacer"></div>
+                  <div class="spacer"></div>
+                  <div class="spacer"></div>
+                  <div class="progress-details">
+                    <span>{{formatCurrency(fromWei ireo.amountRaised)}}</span>
+                    <span class="goal">/ {{formatCurrency(fromWei ireo.maxFundingGoal)}}</span>
+                    <span class="raised">
+                      {{#if isFullyFunded ireo.maxFundingGoal ireo.amountRaised}}
+                          <i class="fas fa-user-times success"></i>
+                      {{else}}
+                      <i class="fas fa-user-times"></i>
+                      {{/if}}
+                      {{ireo.contributorCount}} / {{percentFunded ireo.maxFundingGoal ireo.amountRaised}}
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="progress">
+                      {{#if isFullyFunded ireo.maxFundingGoal ireo.amountRaised}}
+                          <div style="width: {{percentFunded ireo.maxFundingGoal ireo.amountRaised}}%" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percentFunded ireo.maxFundingGoal ireo.amountRaised}}" aria-valuemin="0" aria-valuemax="100">
+                          </div>
+                        {{else}}
+                        <div style="width: {{percentFunded ireo.maxFundingGoal ireo.amountRaised}}%" class="progress-bar" role="progressbar" aria-valuenow="{{percentFunded ireo.maxFundingGoal ireo.amountRaised}}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- {{/unless}} -->
+        </a>
+        {{/if}}
+        {{/each}}
+      </div>
+
+    </div>
+
+</template>

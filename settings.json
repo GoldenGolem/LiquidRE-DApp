@@ -1,0 +1,27 @@
+{
+  "public": {
+    "provider": "https://ropsten.infura.io",
+    "providerWS": "wss://ropsten.infura.io/ws",
+    "ethNetwork": 3
+  },
+  "EMAIL_FROM": "support@liquidre.io",
+  "MAIL_URL": "smtp://AKIAJFJYU52PHSEFD3OQ:Atv9QdjVDx9SlwY2N1Ux1bBwXTwSOE0wUeJsfqy3s2rn@email-smtp.us-west-2.amazonaws.com:587",
+  "backblaze": {
+    "accountId": "61e2d9c809a5",
+    "applicationKey": "002dc883ced7cbadfbc531ae225cdde78ba6799d6b",
+    "buckets": {
+      "files": {
+        "id": "e6b1ee829d89dc5860290a15",
+        "name": "liquidre-dev-files"
+      },
+      "email": {
+        "id": "a6517ea29de9fc6860290a15",
+        "name": "liquidre-dev-email"
+      },
+      "identification": {
+        "id": "c6614ea29d99dc5860290a15",
+        "name": "liquidre-dev-identification"
+      }
+    }
+  }
+}

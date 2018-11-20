@@ -1,0 +1,99 @@
+<template name="ireosNew">
+    <div class=" row">
+        <div class="portfolio_head">
+            <h2>Offer Real Estate For Sale</h2>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <p>
+                <strong>The First Step to an IREO</strong>
+            </p>
+            <p>To start an IREO fill out the form below. Your IREO will be listed under "Pending IREOs" where Trustees can bid
+                to provide their management services. You will need to either be the current propety owner on title, or have
+                the property under contract with an assignable offer that can be assigned to the trustee to complete the
+                closing process.
+            </p>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <form id="new-ireo-submit" onsubmit="return false" class="">
+
+                <!-- <br>'s need removed and real CSS put in 
+                             and start and end times need to be pulled from date picker-->
+                <div class="form-group">
+                    <label>
+                        PROPERTY STREET ADDRESS:
+                    </label>
+                    <input type="text" name="streetAddress" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <label>
+                        SUGGESTED FUNDING GOAL (USD):
+                    </label>
+                    <input type="number" name="goal" class="form-control">
+                </div>
+                <!-- <div class="form-group">
+                    <label>
+                        SUGGESTED MAX FUNDING GOAL
+                    </label>
+                    <input type="number" name="max_goal" class="form-control">
+
+                </div> -->
+                <div class="form-group">
+                    <label>
+                        SUGGESTED START & END TIMES:
+                    </label>
+                    <input type="text" value="" name="daterange" class="form-control">
+
+                </div>
+                <button type="submit" class="iREO_row_btn t_background btn btn-primary btn-lg">Submit Offer</button>
+                
+                <div class="hidden">
+                    <label>
+                        Start time:
+                        <input type="text" name="start_time" id="start_time">
+                    </label>
+                    <label>
+                        End time:
+                        <input type="text" name="end_time" id="end_time">
+                    </label>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().add(2, 'days');
+            var end = moment().add(17, 'days');
+            var minStartDate = moment()
+            function cb(_start, _end) {
+                $('input[name="start_time"]').val(_start.format('YYYY-MM-DD hh:mm A'));
+                $('input[name="end_time"]').val(_end.format('YYYY-MM-DD hh:mm A'));
+            }
+
+            cb(start, end);
+
+            $('input[name="daterange"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 1,
+                timePicker24Hour: false,
+                minDate: minStartDate,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                },
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    '1 Week': [moment().add(2, 'days'), moment().add(7, 'days').add(2, 'days')],
+                    '2 Weeks': [moment().add(2, 'days'), moment().add(14, 'days').add(2, 'days')],
+                    '3 Weeks': [moment().add(2, 'days'), moment().add(22, 'days').add(2, 'days')],
+                    '1 Month': [moment().add(2, 'days'), moment().add(1, 'month').add(2, 'days')],
+                    '2 Months': [moment().add(2, 'days'), moment().add(2, 'month').add(2, 'days')],
+                    '3 Months': [moment().add(2, 'days'), moment().add(3, 'month').add(2, 'days')]
+                }
+            }, function (_start, _end, label) {
+                cb(_start, _end);
+            });
+        });
+    </script>
+</template>

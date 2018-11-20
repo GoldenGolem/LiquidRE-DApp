@@ -1,0 +1,59 @@
+
+
+.lrets-list {
+    margin: 0px;
+    .block {
+        background: #FFFFFF;
+        border-radius: 4px;
+    }
+    .lret {
+        margin-top: 15px;
+        padding: 15px 0;
+        
+        .timer {
+            width: 220px;
+            float: right;
+        }
+        .profile {
+            width: 240px;
+            height: 160px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .address {
+            a {
+                font-family: Roboto;
+                font-size: 18px;
+                color: #000000;
+            }
+        }
+        .value {
+            font-family: Roboto;
+            font-size: 16px;
+            line-height: 24px;
+            .caption {
+                color: #000000;
+            }
+            .text {
+                color: #1875F0;
+            }
+        }
+        .progress-details {
+            font-family: Roboto;
+            font-size: 16px;
+            color: #000000;
+            .fa-users {
+                &.success {
+                    color: #37DB8E !important;
+                }
+                color: #1875F0;
+            }
+            .goal {
+                opacity: 0.25;
+            }
+        }
+    }
+}

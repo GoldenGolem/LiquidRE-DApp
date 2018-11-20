@@ -1,0 +1,40 @@
+<template name="footerscripts">
+	<div style="position:absolute;bottom:1px;right:1px;width:250px;height:0px;">
+		<!--Start of Tawk.to Script-->
+		<!--
+		<script type="text/javascript">
+			var Tawk_API = Tawk_API || {},
+				Tawk_LoadStart = new Date();
+			(function () {
+				var s1 = document.createElement("script"),
+					s0 = document.getElementsByTagName("script")[0];
+				s1.async = true;
+				s1.src = 'https://embed.tawk.to/5aaae6f3d7591465c7089b72/default';
+				s1.charset = 'UTF-8';
+				s1.setAttribute('crossorigin', '*');
+				s0.parentNode.insertBefore(s1, s0);
+			})();
+		</script>
+		-->
+		<!--End of Tawk.to Script-->
+    </div>
+    <!-- Google Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117661954-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){ dataLayer.push(arguments); }
+     gtag('js', new Date());
+     gtag('config', 'UA-117661954-1');
+    </script>
+	<!-- End Google Tracking -->
+	<!-- Mautic -->
+	<script>
+		(function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;
+			w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),
+			m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://hub.liquidre.io/index.php/mtc.js','mt');
+	
+		mt('send', 'pageview');
+	</script>
+	<!-- End Mautic -->
+</template>

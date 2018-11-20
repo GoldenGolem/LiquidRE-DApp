@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>info-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LiquidRe-–-Verify-Identity" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1042.000000, -881.000000)">
+        <g id="Verification" transform="translate(250.000000, 83.000000)" fill="#1875F0" fill-rule="nonzero">
+            <g id="Fields" transform="translate(120.000000, 172.000000)">
+                <g id="ETH" transform="translate(0.000000, 588.000000)">
+                    <path d="M677.400003,42.2000105 L678.600003,42.2000105 L678.600003,41.0000075 L677.400003,41.0000075 L677.400003,42.2000105 Z M678.000003,48.799997 C675.353392,48.799997 673.199999,46.6466516 673.199999,43.999985 C673.199999,41.3534024 675.353392,39.200003 678.000003,39.200003 C680.646602,39.200003 682.800001,41.3534024 682.800001,43.999985 C682.800001,46.6466516 680.646602,48.799997 678.000003,48.799997 Z M678.000003,38 C674.686193,38 672,40.6862007 672,43.999985 C672,47.3138533 674.686193,50 678.000003,50 C681.313801,50 684,47.3138533 684,43.999985 C684,40.6862007 681.313801,38 678.000003,38 Z M677.400003,46.9999925 L678.600003,46.9999925 L678.600003,43.3999835 L677.400003,43.3999835 L677.400003,46.9999925 Z" id="info-icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

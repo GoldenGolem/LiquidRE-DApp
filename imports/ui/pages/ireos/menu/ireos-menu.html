@@ -1,0 +1,34 @@
+<template name="ireosMenu">
+    <div class="col-md-12">
+        <div class="row header block">
+            <div class="col-xs-12 col-sm-4 col-md-5">
+                <h2 class="title">Initial Real Estate Offerings</h2>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-6">
+                <ul class="nav nav-pills">
+                    <li class="{{activeClass 'active'}}">
+                        <a href="/ireos">Active
+                            <span class="badge">{{count 'active'}}</span>
+                        </a>
+                    </li>
+                    <li class="{{activeClass 'pending'}}">
+                        <a href="/ireos/pending">Pending
+                            <span class="badge">{{count 'pending'}}</span>
+                        </a>
+                    </li>
+                    <li class="{{activeClass 'ended'}}">
+                        <a href="/ireos/ended">Ended
+                            <span class="badge">{{count 'ended'}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-1 col-md-1">
+                <a href="/ireos/new" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</template>

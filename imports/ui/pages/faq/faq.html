@@ -1,0 +1,34 @@
+<template name="faq">
+	<div class="faq">
+
+		{{#if isAdmin }}
+
+		<h4>Make New Questions And Answers</h4>
+		<form id="make_new" onsubmit="return false">
+			<input type="text" placeholder="Input Qeustion" id="question_input" />
+			<textarea type="text" placeholder="Input Answer" id="answer_input"></textarea>
+			<input type="submit" value="Post" id="post_button">
+		</form>
+		{{/if}}
+		<h2 class="title">Frequently Asked Questions</h2>
+		<ul>
+			{{#each qa in getAllQA}}
+
+			<li>
+				<p class="question">
+					<strong>{{qa.question}}</strong>
+				</p>
+				<p class="answer">{{qa.answer}}</p>
+				{{#if isAdmin}}
+				<form class="remove_qa" onsubmit="return false" id="{{qa._id}}">
+					<input type="submit" value="Remove"> </form>
+				{{/if}}
+			</li>
+
+			{{/each}}
+		</ul>
+		<span id="contact_us">Have a question not answered here?
+			<a href="/support">Contact Us.</a>
+		</span>
+	</div>
+</template>

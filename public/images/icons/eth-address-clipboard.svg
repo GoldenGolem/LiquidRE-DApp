@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="11px" height="12px" viewBox="0 0 11 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>eth-address-clipboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LiquidRe-–-Dropdown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1315.000000, -68.000000)">
+        <g id="Info-Box" transform="translate(1033.000000, 51.000000)" fill="#1875F0" fill-rule="nonzero">
+            <path d="M291.842105,27.9090909 L285.473684,27.9090909 L285.473684,20.2727273 L291.842105,20.2727273 L291.842105,27.9090909 Z M291.842105,19.1818182 L285.473684,19.1818182 C284.836842,19.1818182 284.315789,19.6727273 284.315789,20.2727273 L284.315789,27.9090909 C284.315789,28.5090909 284.836842,29 285.473684,29 L291.842105,29 C292.478947,29 293,28.5090909 293,27.9090909 L293,20.2727273 C293,19.6727273 292.478947,19.1818182 291.842105,19.1818182 Z M290.105263,17 L283.157895,17 C282.521053,17 282,17.4909091 282,18.0909091 L282,25.7272727 L283.157895,25.7272727 L283.157895,18.0909091 L290.105263,18.0909091 L290.105263,17 Z" id="eth-address-clipboard"></path>
+        </g>
+    </g>
+</svg>

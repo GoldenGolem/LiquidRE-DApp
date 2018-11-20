@@ -1,0 +1,50 @@
+<template name="people">
+    <div class="sponsor-profile">
+    {{#with getUser seller}}
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+        {{#if profile.profileImage}}
+        <img class="avatar" src="{{fileLinkURL profile.profileImage}}">
+        {{else}}
+        <img class="avatar" src="/images/user-icon.png">
+        {{/if}}
+        </div>
+        <div class="col-xs-9 col-md-10">
+        <div class="pull-left user">
+            <div class="name">{{profile.name}}</div>
+            <div class="rating">
+            </div>
+        </div>
+
+        <div class="pull-left legend">
+            <span>SELLER</span>
+        </div>
+        </div>
+    </div>
+    {{/with}}
+    <br />
+
+    {{#with getUser trustee}}
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+        {{#if profile.profileImage}}
+        <img class="avatar" src="{{fileLinkURL profile.profileImage}}">
+        {{else}}
+        <img class="avatar" src="/images/user-icon.png">
+        {{/if}}
+        </div>
+        <div class="col-xs-9 col-md-10">
+        <div class="pull-left user">
+            <div class="name">{{profile.name}}</div>
+            <div class="rating">
+            </div>
+        </div>
+
+        <div class="pull-left legend">
+            <span>TRUSTEE</span>
+        </div>
+        </div>
+    </div>
+    {{/with}}
+    </div>
+</template>

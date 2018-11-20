@@ -1,0 +1,42 @@
+<template name="login">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 web3_login">
+            <div class="web3_wrapper">
+                <div class="web3_img">
+                    <img src="/images/dash_vectore.svg" />
+                </div>
+                {{#if web3Found}} {{#unless coinbaseFound}}
+                <h2>Web3 Detected</h2>
+                <div class="btn_metamask">
+                    <a href="/entities/register" class="btn btn-primary transparent">
+                        REGISTER
+                    </a>
+                </div>
+                {{else}}
+                <h2>Web3 Detected But Not Logged In</h2>
+                <p>Watch the video below to learn how to use LiquidRE or just download MetaMask and get started!</p>
+                <div class="btn_metamask">
+                    <a class="btn btn-primary" href="https://metamask.io/" target=_blank>Go Get Metamask</a>
+                </div>
+                <div class="video_mask">
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/6Gf_kRE4MJU?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+                {{/unless}} {{else}}
+                <h2>Web3 Not Detected</h2>
+                <p>Watch the video below to learn how to use LiquidRE or just download MetaMask and get started!</p>
+                <div class="btn_metamask">
+                    <a href="https://metamask.io/" target=_blank>Go Get Metamask</a>
+                </div>
+                <div class="video_mask">
+                    <iframe width="100%" height="350" src="https://www.youtube.com/embed/6Gf_kRE4MJU?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-md-1"></div>        
+    </div>
+
+</template>

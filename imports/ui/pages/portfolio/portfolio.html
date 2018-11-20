@@ -1,0 +1,92 @@
+<template name="portfolio">
+    <div class="row portfolio">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">My Portfolio</h2>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-7">
+                            <div class="balance pull-right">
+                                {{formatNumber(fromWei tpegBalance)}} TPEG
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- <div class="col-sm-6 col-md-5 ">
+                            <button id="tpeg-faucet" class="btn btn-primary btn-smartlaw-primary pull-right btn-tpeg-faucet">TPEG Faucet</button>
+                            <a href="/tpegs" class="btn btn-primary btn-smartlaw-primary pull-right btn-tpeg-faucet">TPEG Faucet</a>
+                            <div class="clearfix"></div>
+                        </div> -->
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row values block" hidden>
+                <!-- <div class="col-xs-12 col-sm-4 col-md-3">
+                    <h2 class="title">Portfolio value:</h2>
+                </div> -->
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div class="row value-block">
+                        <div class="col-md-12 green">
+                            <!-- <span class="value"></span> -->
+                            <span class="caption float-right">≈ (insert total value of user's shares) USD</span>
+
+                        </div>
+                        <!-- <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 black" hidden>
+                            <span class="caption">ETH</span>
+                            <span class="value">{{formatNumber(fromWei ethBalance)}}</span>
+                        </div>
+                        <div class="spacer col-xs-12 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 orange" hidden>
+                            <span class="caption">BTC</span>
+                            <span class="value">12,123.00</span>
+                        </div>
+                        <div class="clearfix"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 list block">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Shares</th>
+                        <th>Price</th>
+                        <th>Position</th>
+                        <th>Market Cap</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each lret in getLRETs}} {{#if showLret lret}}
+                    <tr>
+                        <td>{{lret.name}}</td>
+                        <td>{{fromWei lret.balance}}
+                            <span>({{percentOfSupply lret}}%)</span>
+                        </td>
+                        <td>${{price lret}}</td>
+                        <td>{{fromWei (position lret)}}</td>
+                        <td>{{marketCap lret}}</td>
+                        {{#if lret.conversionsEnabled}}
+                        <td><span class="label label-success">Enabled</span></td>
+                        {{else}}
+                        <td><span class="label label-danger">Disabled</span></td>
+                        {{/if}}
+                        <td>
+                            <a href="/lrets/{{lret.address}}" class="btn btn-primary btn-sm transparent">Details</a>
+                        </td>
+                    </tr>
+                    {{/if}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</template>

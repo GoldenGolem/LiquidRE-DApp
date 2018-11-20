@@ -1,0 +1,172 @@
+.property-id {
+    margin: 0px;
+    .block {
+        background: #FFFFFF;
+        border-radius: 4px;
+    }
+    .header {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        h2.title {
+            margin: 5px 0;
+        }
+        .balance {
+            background-image: url('/images/icons/balance-icon.svg');
+            background-repeat: no-repeat;
+            background-position: left;
+            padding-left: 25px;
+            margin: 5px 0;
+            font-family: Roboto;
+            font-size: 16px;
+            color: #000000;
+        }
+        .labels {
+            margin-top: 8px;
+            .label {
+                font-family: Roboto;
+                font-size: 16px;
+                text-align: left;
+                border-radius: 4px;
+                padding: 8px;
+                &.label-success {
+                    color: #05C46B;
+                    font-weight: 400;
+                    background: rgba(5,196,107,0.10);
+                }
+                &.label-primary {
+                    margin-top:10px;
+                    color: #1875F0;
+                    font-weight: 400;
+                    background: #E7F1FD;
+                }
+            }
+        }
+    }
+    .details {
+        margin-top: 15px;
+        .block {
+            &.left {
+                margin-left: -15px;
+            }
+            &.right {
+                margin-right: -15px;
+            }
+            &.market-actions {
+                label {
+                    opacity: 0.5;
+                    font-family: Roboto;
+                    font-size: 12px;
+                    color: #000000;
+                }
+                input {
+                    box-shadow: none;
+                    border-radius: 2px;
+                }
+            }
+            .content {
+                padding: 15px;
+                &.figures {
+                    .figure {
+                        margin-bottom: 15px;
+                        font-family: Roboto;
+                        font-size: 16px;
+                        .caption {
+                            color: #4A4A4A;
+                            line-height: 22px;
+                        }
+                        .value {
+                            color: #1875F0;
+                            &.box {
+                                text-align: center;
+                                font-size:24px;
+                                font-weight: 500;
+                                background: #FFFFFF;
+                                border: 2px solid rgba( #A2A2A2, .25);
+                                border-radius: 4px;
+                                padding: 12px;
+                                margin: 12px 0;
+                            }
+                        }
+                    }
+                }
+                .title {
+                    margin: 0;
+                    padding: 5px 0px 25px;
+                    font-family: Roboto;
+                    font-size: 16px;
+                    color: #4A4A4A;
+                    line-height: 22px;
+                    text-transform: uppercase;
+                }
+                .seller-detail {
+                    font-family: Roboto;
+                    font-size: 16px;
+                    color: #000000;
+                    line-height: 24px;
+                    .text {
+                        color: #1875F0 !important;
+                    }
+                }
+                .btn-link {
+                    color: #1875F0 !important;
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                }
+                .progress-details {
+                    font-family: Roboto;
+                    font-size: 16px;
+                    color: #000000;
+                    font-weight:bold;
+                    .investors-icon {
+                        background-image: url('/images/icons/investors-icon.svg');
+                        background-repeat: no-repeat;
+                        background-position: left;
+                        display:inline-block;
+                        width:60px;
+                        height:10px;
+                    }
+                    .fa-users {
+                        &.success {
+                            color: #37DB8E !important;
+                        }
+                        color: #1875F0;
+                    }
+                    .goal {
+                        opacity: 0.25;
+                    }
+                    .raised {
+                        float: right;
+                    }
+                    .input_custom {
+                        label {
+                            font-weight: normal !important;
+                        }
+                    }
+                }
+                .timer {
+                    .text-caption {
+                        margin-top: 20px;
+                        font-family: Roboto;
+                        font-size: 16px;
+                        color: #000000;
+                        line-height: 24px;
+                    }
+                    .countdown {
+                        ul {
+                            li {
+                                border-top: none !important;
+                                border-bottom: none !important;
+                            }
+                            li:first-child {
+                                border-left: none !important;
+                            }
+                            li:last-child {
+                                border-right: none !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

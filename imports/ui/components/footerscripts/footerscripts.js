@@ -1,0 +1,1 @@
+import "./footerscripts.html";

@@ -1,0 +1,27 @@
+
+
+.sidebar {
+    .nav {
+        .nav-item {
+            a.nav-link:hover, a.nav-link:visited {
+                background-color: #E7F1FD;
+                border-radius: 4px;
+            }
+            a.nav-link {
+                padding: 15px 10px;
+                &.active {
+                    background-color: #E7F1FD;
+                    border-radius: 4px;
+                    color: #1875F0;
+                }
+                font-family: Roboto;
+                font-size: 14px;
+                font-weight: 500;
+                color: #4A4A4A;
+                img {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

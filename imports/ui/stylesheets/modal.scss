@@ -1,0 +1,41 @@
+
+
+div.modal {
+    font-family: Roboto;
+    .modal-content {
+        border-radius: 4px;
+        box-shadow: none;
+        .modal-header {
+            border-bottom: none;
+            .modal-title {
+                text-align: center;
+                font-weight: 700;
+                font-size: 24px;
+                color: #4A4A4A;
+                line-height: 34px;
+            }
+            .close {
+                opacity: 1;
+                color: #4A4A4A;
+            }
+        }
+        .modal-body {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #000000;
+            line-height: 34px;
+            label {
+                opacity: 0.5;
+                font-weight: 500;
+                font-size: 12px;
+                color: #000000;
+                letter-spacing: 0;
+            }
+        }
+        .modal-footer {
+            padding: 15px 30px;
+            text-align: center;
+            border-top: none;
+        }
+    }
+}

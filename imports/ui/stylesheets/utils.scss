@@ -1,0 +1,103 @@
+.btn {
+    border-radius: 4px;
+    &.btn-primary {
+        &.btn-smartlaw-primary {
+            background: #1875F0 !important;
+        }
+    }
+    &.transparent {
+        &.btn-danger {
+            background: none !important;
+            color: #c9302c !important;
+        }
+        &.btn-primary {
+            border: 2px solid rgba(24,117,240,0.25);
+            background: none !important;
+            color: #1875F0 !important;
+        }
+    }
+    &.border-dashed {
+        border-style: dashed !important;
+    }
+}
+
+.no-padding {
+    &.left {
+        padding-left: 0;
+    }
+    &.right {
+        padding-right: 0;
+    }
+}
+
+.progress-bar {
+    &.progress-bar-success {
+        background-color: #37DB8E !important;
+    }
+    background-color: #1875F0 !important;
+}
+
+.primary-text {
+    color: #1875F0 !important;
+}
+
+.text-primary {
+    color: #1875F0 !important;
+}
+
+.text-success {
+    color: #37DB8E !important;
+}
+
+.text-danger {
+    color: #FF5E57 !important;
+}
+
+.text-muted {
+    color: #777 !important;
+}
+
+.daterangepicker {
+    .ranges:first-child {
+        display: none;
+    }
+}
+
+.alert-message {
+    font-family: Roboto;
+    font-size: 14px;
+    color: #FF5E57;
+    line-height: 24px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.position-center {
+    margin: 0 auto;
+}
+
+.spacer {
+    height: 15px;
+}
+
+.form-group {
+    .input-group-addon, .form-control {
+        box-shadow: none;
+        border: 2px solid #EAEAEA;
+        background: transparent;
+    }
+    .input-group {
+        .form-control {
+            border-right: none;
+        }
+        .input-group-addon {
+            border-left: none;
+        }
+    }
+}
+
+hr {
+    border-top: 2px solid #eee !important;
+}

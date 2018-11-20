@@ -1,0 +1,59 @@
+<template name="sellerSidebarWidget">
+    {{#with getUser user}}
+    <div class="row seller-sidebar-widget">
+        <div class="col-md-12">
+            <h2 class="title">Seller</h2>
+        </div>
+        <div class="col-xs-4">
+            {{#if profile.profileImage}}
+            <img style="max-width: 80px;" src="{{fileLinkURL profile.profileImage}}" />
+            {{else}}
+            <img style="max-width: 80px;" src="/images/user-icon.png" />            
+            {{/if}}
+        </div>
+        <div class="col-xs-8">
+            <p>{{profile.name}}</p>
+            <div class="div_rating">
+                <!-- <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span>
+                <span>
+                    <img src="/images/icons/star.svg" alt="" />
+                </span> -->
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <div class="seller-detail">
+                Successful IREOs:
+                <span class="text">{{getSuccessfulIreos username}}</span>
+            </div>
+            <div class="spacer"></div>
+            <div class="seller-detail">
+                Failed IREOs:
+                <span class="text">{{getFailedIreos username}}</span>
+            </div>
+            <div class="spacer"></div>
+            <div class="seller-detail">
+                Pending IREOs:
+                <span class="text">{{getPendingIreos username}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <a class="btn btn-primary btn-block transparent" href="#">SELLER PROFILE</a>
+        </div> 
+    </div>
+    {{/with}}
+</template>

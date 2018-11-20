@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="23px" height="19px" viewBox="0 0 23 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>alert</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LiquidRe-–-IREO-Listing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-421.000000, -897.000000)">
+        <g id="Detail" transform="translate(250.000000, 83.000000)" fill="#FF5E57" fill-rule="nonzero">
+            <g id="Valuations" transform="translate(0.000000, 718.000000)">
+                <g id="Title" transform="translate(24.000000, 24.000000)">
+                    <g id="Alert" transform="translate(147.000000, 70.000000)">
+                        <path d="M12.5454545,13.6315867 L10.4545455,13.6315867 L10.4545455,9.42104377 L12.5454545,9.42104377 L12.5454545,13.6315867 Z M12.5454545,17.8421086 L10.4545455,17.8421086 L10.4545455,15.7368476 L12.5454545,15.7368476 L12.5454545,17.8421086 Z M1.8195004,21 L21.1804996,21 C21.7618514,21 22.2331301,20.5287213 22.2331301,19.9473695 C22.2331301,19.7632241 22.1848228,19.5823005 22.0930316,19.4226636 L12.412532,2.58701216 C12.1227449,2.08303465 11.4792716,1.909399 10.9752941,2.19918606 C10.8140191,2.29191918 10.6802011,2.42573716 10.587468,2.58701216 L0.90696841,19.4226636 C0.617181346,19.9266411 0.790817004,20.5701145 1.29479451,20.8599015 C1.45443134,20.9516927 1.63535497,21 1.8195004,21 Z" id="alert"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

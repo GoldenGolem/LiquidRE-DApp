@@ -1,0 +1,30 @@
+<template name="countdown">
+    <div class="countdown">
+        {{#if endDate}}
+            {{#if isEnded}}
+            <div class="caption-ended">CROWDSALE ENDED</div>
+            {{else}}
+
+            <ul>
+                <li>
+                    <span class="value">{{safeNumber getDays}}</span>
+                    <span class="caption">Days</span>
+                </li>
+                <li class="no-border-left">
+                    <span class="value">{{safeNumber getHours}}</span>
+                    <span class="caption">Hours</span>
+                </li>
+                <li class="no-border-left">
+                    <span class="value">{{safeNumber getMinutes}}</span>
+                    <span class="caption">Minutes</span>
+                </li>
+                <li class="no-border-left">
+                    <span class="value">{{safeNumber getSeconds}}</span>
+                    <span class="caption">Seconds</span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+            {{/if}}
+        {{/if}}
+    </div>
+</template>

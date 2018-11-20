@@ -1,0 +1,79 @@
+<template name="trusteesDashboard">
+    <div class="row trustees-dashboard">
+
+        <div class="col-md-12">
+            <div class="row header block">
+                <div class="col-xs-12 col-sm-4 col-md-5">
+                    <h2 class="title">Trustees</h2>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <a href="#" class="btn btn-primary btn-smartlaw-primary pull-right">My Public Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 list block">
+            <div class="list-header">
+                <h2 class="title">My Active Trusts</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Action Needed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each ireo in getIREOsBids}}
+                        {{#each bid in ireo.bids}}
+                            {{#if isEqual bid.bidder getTrustsAddress}}
+                                <tr>
+                                    <td>{{ireo.name}}</td>
+                                    <td>{{ireo.status}}</td>
+                                    <td>
+                                        <a href="/ireos/{{ireo.address}}" class="btn btn-primary btn-sm transparent">VIEW</a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12 list block">
+            <div class="list-header">
+                <h2 class="title">Bids</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Bid Amount</th>
+                        <th>Status</th>
+                        <th>Action Needed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each ireo in getIREOsBids}}
+                        {{#if isEqual ireo.status 'Bidding'}}
+                            {{#each bid in ireo.bids}}
+                                {{#if isEqual bid.bidder getTrustsAddress}}
+                                    <tr>
+                                        <td>{{ireo.name}}</td>
+                                        <td>{{bidAmount bid.basis}}</td>
+                                        <td>{{ireo.status}}</td>
+                                        <td>
+                                            <a href="/ireos/{{ireo.address}}" class="btn btn-primary btn-sm transparent">VIEW</a>
+                                        </td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

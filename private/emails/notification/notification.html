@@ -1,0 +1,32 @@
+<section class="email-body">
+  <section class="email-container">
+    {{> Email_Header}}
+    <section class="email-content-body">
+      <div>
+        {{> Email_Greetings name=emailDetails.name greetingType=emailDetails.greetingType
+        message=emailDetails.message messageFooterText=emailDetails.messageFooterText}}
+      </div>
+      <div class="add-bottom-line"></div>
+      <div class="notification-box">
+        <div class="image">
+          <img src={{emailDetails.notificationDetails.image}}>
+        </div>
+        <div class="description">
+          <h3>
+            {{emailDetails.notificationDetails.heading}}
+          </h3>
+          <p>
+            <strong>{{emailDetails.notificationDetails.info}}</strong>
+          </p>
+          <h3>
+            {{emailDetails.notificationDetails.footer}}
+          </h3>
+        </div>
+      </div>
+      <div class="add-bottom-line"></div>
+      {{#if emailDetails.actionDetails}} {{> Email_Action actionDetails=emailDetails.actionDetails}}
+      {{/if}}
+    </section>
+  </section>
+  {{> Email_Footer}}
+</section>

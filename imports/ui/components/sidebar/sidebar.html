@@ -1,0 +1,97 @@
+<template name="sidebar">
+  <div class="sidebar">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='root|^lrets'}}" href="/">
+          <span>
+            <img class="nav-icons" src="/images/icons/lrets.svg" alt="" /> Liquid Real Estate
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^ireos'}}" href="/ireos">
+          <span>
+            <img class="nav-icons" src="/images/icons/ireos.svg" alt="" /> IREO Crowdsales
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute 'portfolio'}}" href="/portfolio">
+          <span>
+            <img class="nav-icons" src="/images/icons/my-portfolio.svg" alt="" /> My Portfolio</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute 'usdpeg'}}" href="/usdpeg">
+          <span>
+            <img class="nav-icons" src="/images/icons/4-tpeg-token.svg" alt="" /> USD/PEG Token</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^rent'}}" href="/rent">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/5-rent-token.svg" alt="" /> RENT Token
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^verifications'}}" href="/verifications">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/7-verification.svg" alt="" /> Verifications
+          </span>
+        </a>
+      </li>
+      {{#if isAdmin}}
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^admin'}}" href="/admin">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/8-trustees.svg" alt="" /> Admin
+          </span>
+        </a>
+      </li>
+      {{/if}}
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^trustees'}}" href="/trustees">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/8-trustees.svg" alt="" /> Trustees
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^support'}}" href="/support">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/9-support.svg" alt="" /> Support
+          </span>
+        </a>
+      </li>
+      <!-- {{#if isAdmin}}
+      <li class="nav-item">
+        <a class="nav-link {{isActiveRoute regex='^entities'}}" href="/entities">
+          <span>
+            <img class="nav-icons" style="padding-top: -10px;" src="/images/icons/trustees.svg" alt="" /> Entities
+          </span>
+        </a>
+      </li>
+      {{/if}} -->
+      <!-- <hr>
+      <li class="{{isActiveRoute 'startIREO'}}">
+        <a href="/startIREO">
+          <span>
+            <img class="nav-icons" src="/images/icons/start-ireo.svg" alt="" /> Start a Test IREO</span>
+        </a>
+      </li>
+      <li class="{{isActiveRoute 'ireo/new/1'}}">
+        <a href="/ireo/new/1">
+          <span>
+            <img class="nav-icons" src="/images/icons/start-ireo.svg" alt="" /> Start an IREO</span>
+        </a>
+      </li>
+      <li class="{{isActiveRoute 'trusteeRegistration'}}">
+        <a href="/trusteeRegistration">
+          <span>
+            <img class="nav-icons" src="/images/icons/register-trustee.svg" alt="" /> Register as Trustee</span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</template>
